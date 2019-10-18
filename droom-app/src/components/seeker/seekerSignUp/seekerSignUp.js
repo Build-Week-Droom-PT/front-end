@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import SeekerCreateProfile from "./SeekerCreateProfile";
+// import PrivateRoute from "../../private/PrivateRoute";
+import { Route } from "react-router-dom";
 
-export default function seekerSignUp() {
+export default function SeekerSignUp() {
   const [jobSeeker, setJobSeeker] = useState({
     id: "",
     username: "",
@@ -33,24 +35,26 @@ export default function seekerSignUp() {
         skills: '',
         location: '',
         user_id: '',})*/
-    <PrivateRoute
-      path="/item-list"
-      render={props => {
-        return (
-          <SeekerCreateProfile
-            {...props}
-            jobSeeker={jobSeeker}
-            firstName={jobSeeker.firstName}
-            lastName={jobSeeker.lastName}
-            email={jobSeeker.email}
-            skills={jobSeeker.skills}
-            location={jobSeeker.location}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-          />
-        );
-      }}
-    />;
+    return (
+      <Route
+        path="/item-list"
+        render={props => {
+          return (
+            <SeekerCreateProfile
+              {...props}
+              jobSeeker={jobSeeker}
+              firstName={jobSeeker.firstName}
+              lastName={jobSeeker.lastName}
+              email={jobSeeker.email}
+              skills={jobSeeker.skills}
+              location={jobSeeker.location}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          );
+        }}
+      />
+    );
   };
 
   return (
