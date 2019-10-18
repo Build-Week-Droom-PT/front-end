@@ -26,7 +26,9 @@ const LogIn = () => {
       .then(
         localStorage.getItem('token') ?  window.location.href="/homepage" : console.log('token')
       )
-      .catch(err)
+      .catch(err => {
+        console.log(err)
+      })
     
     setLoginData(initialState);
 
