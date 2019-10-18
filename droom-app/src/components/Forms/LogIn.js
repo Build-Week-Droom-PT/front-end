@@ -1,31 +1,36 @@
 import React, { useState } from "react";
-import SeekerSignUp from "../seeker/seekerSignUp/SeekerSignUp";
-import PrivateRoute from "../private/PrivateRoute";
-import SeekerCreateProfile from "../seeker/seekerSignUp/SeekerCreateProfile";
+// import SeekerSignUp from "../seeker/seekerSignUp/SeekerSignUp";
+// import PrivateRoute from "../private/PrivateRoute";
+// import SeekerCreateProfile from "../seeker/seekerSignUp/SeekerCreateProfile";
+
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
+
+const initialState = {
+  username: "",
+  password: ""
+}
 
 const LogIn = () => {
-  const [loginData, setLoginData] = useState({
-    username: "",
-    password: ""
-  });
+  const [loginData, setLoginData] = useState(initialState);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoginData({ ...loginData });
     console.log(loginData);
-    return (
-      <PrivateRoute
-        path="/seeker-sign-up"
-        render={props => {
-          return <SeekerSignUp />;
-        }}
-      />
-    );
+
+    // return (
+    //   <PrivateRoute
+    //     path="/seeker-sign-up"
+    //     render={props => {
+    //       return <SeekerSignUp />;
+    //     }}
+    //   />
+    // );
   };
 
   const handleChange = e => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
+
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -34,6 +39,7 @@ const LogIn = () => {
           name="username"
           placeholder="username"
           onChange={handleChange}
+          
         />
         <input
           type="password"
