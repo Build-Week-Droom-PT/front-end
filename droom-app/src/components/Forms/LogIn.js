@@ -24,6 +24,14 @@ const LogIn = () => {
         localStorage.setItem('token', res.data.payload)
         this.props.history.push('/homepage')
       })
+      // .then(
+      //   localStorage.getItem('token') ?  window.location.href="/homepage" : console.log('token')
+      // //   if(localStorage.getItem('token')) {
+      // //   window.location.href='/homepage'
+      // // } else {
+      // //   console.log('token')
+      // // }
+      // )
       .catch(err => {
         console.log(err)
       })
@@ -62,7 +70,7 @@ const LogIn = () => {
           onChange={handleChange}
           value={loginData.password}
         />
-        <button className="button" type="submit">
+        <button className="button">
           Log In
         </button>
       </form>
