@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SeekerCreateProfile from "./SeekerCreateProfile";
 
 export default function seekerSignUp() {
   const [jobSeeker, setJobSeeker] = useState({
@@ -32,7 +33,24 @@ export default function seekerSignUp() {
         skills: '',
         location: '',
         user_id: '',})*/
-    <PrivateRoute path="/item-list" render={() => {}} />;
+    <PrivateRoute
+      path="/item-list"
+      render={props => {
+        return (
+          <SeekerCreateProfile
+            {...props}
+            jobSeeker={jobSeeker}
+            firstName={jobSeeker.firstName}
+            lastName={jobSeeker.lastName}
+            email={jobSeeker.email}
+            skills={jobSeeker.skills}
+            location={jobSeeker.location}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        );
+      }}
+    />;
   };
 
   return (
@@ -41,14 +59,14 @@ export default function seekerSignUp() {
         id="username"
         placeholder="Please Select An Username"
         value={jobSeeker.username}
-        onChange={changeHandler}
+        onChange={handleChange}
       />
       <input
         type="password"
         id="password"
         placeholder="password"
         value={jobSeeker.password}
-        onChange={changeHandler}
+        onChange={handleChange}
       />
       <button type="submit">Submit</button>
     </form>

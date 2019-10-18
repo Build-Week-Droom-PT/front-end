@@ -1,44 +1,50 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function seekerSignUp() {
-  const [jobSeeker, setJobSeeker] = useState({
-    id: "",
-    username: "",
-    password: "",
-    email: "",
-    isCompany: false,
-    firstName: "",
-    lastName: "",
-    skills: "",
-    location: "",
-    user_id: ""
-  });
+export default function SeekerCreateProfile({{...props},
+  jobSeeker,
+  firstName,
+  lastName,
+  email,
+  skills,
+  location,
+  handleChange,
+  handleSubmit}) {
+ 
 
-  const handleChange = e => {
-    setJobSeeker({ ...jobSeeker, [e.target.name]: e.target.value });
-  };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(jobSeeker);
-    //Thatcher adds to backend?
-    /* reset the form: setJobSeeker({...jobSeeker, id: '',
-        username: '',
-        password: '',
-        email: '',
-        isCompany: false,
-        firstName: '',
-        lastName: '',
-        skills: '',
-        location: '',
-        user_id: '',})*/
-  };
 
   return (
-    <input
-      id="firstName"
-      placeholder="First Name"
-      value={jobSeeker.firstName}
-    />
+    <form>
+      <input
+        type="text"
+        id="firstName"
+        placeholder="First Name"
+        value={firstName}
+      />
+      <input
+        type="text"
+        id="lastName"
+        placeholder="Last Name"
+        value={lastName}
+      />
+      <input
+        type="email"
+        id="email"
+        placeholder="email@example.com"
+        value={email}
+      />
+      <input
+        type="text"
+        id="skills"
+        placeholder="Skills"
+        value={skills}
+      />
+      <input
+        type="text"
+        id="location"
+        placeholder="City, State"
+        value={location}
+      />
+    </form>
   );
 }
