@@ -17,6 +17,20 @@ const LogIn = () => {
     e.preventDefault();
     console.log(loginData);
 
+    axiosWithAuth()
+      .post("/login", loginData)
+      .then( res => {
+        console.log(res)
+        localStorage.setItem('token', res.data.payload)
+        this.props.history.push('/homepage')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    
+    setLoginData(initialState);
+
+
     // return (
     //   <PrivateRoute
     //     path="/seeker-sign-up"
@@ -37,18 +51,19 @@ const LogIn = () => {
         <input
           type="text"
           name="username"
-          placeholder="username"
+          placeholder="Username"
           onChange={handleChange}
-          
+          value={loginData.username}
         />
         <input
           type="password"
           name="password"
           placeholder="Password"
           onChange={handleChange}
+          value={loginData.password}
         />
         <button className="button" type="submit">
-          Submit
+          Log In
         </button>
       </form>
     </div>
