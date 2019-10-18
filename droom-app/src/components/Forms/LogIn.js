@@ -22,16 +22,10 @@ const LogIn = () => {
       .then( res => {
         console.log(res)
         localStorage.setItem('token', res.data.payload)
-        this.props.history.push('/homepage')
       })
-      // .then(
-      //   localStorage.getItem('token') ?  window.location.href="/homepage" : console.log('token')
-      // //   if(localStorage.getItem('token')) {
-      // //   window.location.href='/homepage'
-      // // } else {
-      // //   console.log('token')
-      // // }
-      // )
+      .then(
+        localStorage.getItem('token') ?  window.location.href="/homepage" : console.log('token')
+      )
       .catch(err => {
         console.log(err)
       })
