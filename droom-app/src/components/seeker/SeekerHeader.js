@@ -14,7 +14,6 @@ import {
 
 const SeekerHeader = ({ props, userData }) => {
   console.log(userData.name);
-  //   const user = props.data.name;
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
