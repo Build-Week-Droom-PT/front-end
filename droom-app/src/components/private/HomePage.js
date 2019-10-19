@@ -1,4 +1,5 @@
 import React from "react";
+import LogIn from "../Forms/LogIn";
 
 // export default function HomePage() {
 //   if(localStorage.getItem('token')) {
@@ -14,6 +15,7 @@ export default function HomePage(props) {
   return (
     <div>
       <h1> HomePage</h1>
+      <LogIn/>
     </div>
   );
 }

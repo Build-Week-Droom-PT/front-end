@@ -1,17 +1,10 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import PrivateRoute from "../private/PrivateRoute";
 // import CompanyHomePage from "../company/CompanyHomePage";
 // import SeekerHomePage from "../seeker/SeekerHomePage";
 
-// // export default function HomePage() {
-// //   if(localStorage.getItem('token')) {
-// //   return (
-// //     <h1> HomePage</h1>
-// //   )
-// //   }
-// //   else {window.location.href="/"}
-// // }
+// {/* <PrivateRoute exact path="/homepage" component={HomePage} /> */}
 
 // export default function SeekerProfile() {
 //   // const [returnedListings, setReturnedListings] = useState({});
@@ -62,3 +55,11 @@
 //     </div>
 //   );
 // }
+
+export default function SeekerHomePage() {
+    return (
+        <div>
+            <h1>You are a seeker!</h1>
+        </div>
+    )
+}

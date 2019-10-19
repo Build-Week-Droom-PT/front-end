@@ -16,23 +16,33 @@ const LogIn = () => {
     e.preventDefault();
     console.log(loginData);
     let seek = "";
+
     axiosWithAuth()
       .post("/login", loginData)
       .then(res => {
         console.log(res);
         console.log(res.data.is);
-        setUserType(res.data.isCompany);
-        setUserID(res.data);
-        if (userType) {
-          seek = "companies";
-        } else {
-          seek = "seekers";
-        }
+        
+        // setUserType(res.data.isCompany);
+        // setUserID(res.data);
+        // if (userType) {
+        //   seek = "companies";
+        // } else {
+        //   seek = "seekers";
+        // }
+
         localStorage.setItem("token", res.data.payload);
 
-        localStorage.getItem("token")
-          ? (window.location.href = `/${seek}/:id`)
-          : console.log("token");
+        if (res.data.isCompany) {
+          window.location.href = "/companyhomepage"
+        } else {
+          window.location.href ="/seekerhomepage"
+        }
+
+        // localStorage.getItem("token")
+        //   ? (window.location.href = `/${seek}/:id`)
+        //   : console.log("token");
+
       })
       // .then(
       //   localStorage.getItem("token")

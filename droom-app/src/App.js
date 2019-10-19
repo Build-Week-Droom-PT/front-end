@@ -6,7 +6,11 @@ import SeekerProfileUpdateWithRouter from "./components/seeker/SeekerProfileUpda
 import LogIn from "./components/Forms/LogIn";
 import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import CompanyProfileWithRouter from "./components/company/CompanyProfile";
+
 import HomePage from "./components/private/HomePage";
+import SeekerHomePage from "./components/seeker/SeekerHomePage";
+import CompanyHomePage from "./components/company/CompanyHomePage";
+
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
 
@@ -14,8 +18,11 @@ function App() {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={LogIn} />
-        <PrivateRoute exact path="/homepage" component={HomePage} />
+        <Route exact path="/login" component={LogIn} />
+        <Route exact path="/" component={HomePage} />
+        <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} />
+        <PrivateRoute exact path="/companyhomepage" component={CompanyHomePage} />
+
         <PrivateRoute
           exact
           path="/seekers/:id"
