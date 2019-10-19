@@ -3,7 +3,7 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router";
 import SeekerHeader from "../seeker/SeekerHeader";
-import LogOut from "../Forms/LogOut";
+// import LogOut from "../Forms/LogOut";
 
 function SeekerProfile(props) {
   console.log(props);
@@ -52,9 +52,9 @@ function SeekerProfile(props) {
   return (
     <div>
       <SeekerHeader {...props} userData={userData} path="/" />
-      <a href="#" onClick={LogOut()}>
-        Log Out
-      </a>
+      {/* <a href="#" onClick={LogOut()}> */}
+      {/* Log Out
+      </a> */}
     </div>
   );
 }

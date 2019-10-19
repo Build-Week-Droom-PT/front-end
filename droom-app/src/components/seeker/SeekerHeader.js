@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+
+import LogOut from "../Forms/LogOut";
+
 import {
   Collapse,
   Navbar,
@@ -30,6 +33,11 @@ const SeekerHeader = ({ props, userData }) => {
             </NavItem>
             <NavItem>
               <NavLink to="/update-seeker-profile">Udate Profile</NavLink>
+            </NavItem>
+            <NavItem>
+              <a href="#" onClick={LogOut()}>
+                Log Out
+              </a>
             </NavItem>
           </Nav>
         </Collapse>
