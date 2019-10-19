@@ -182,7 +182,11 @@ import React from "react";
 import { withRouter } from "react-router";
 
 function SeekerProfileUpdate() {
-  return <h1>Seeker Profile Update</h1>;
+  return (
+    <div>
+      <h1> Profile Update</h1>
+    </div>
+  );
 }
 
 const SeekerProfileUpdateWithRouter = withRouter(SeekerProfileUpdate);

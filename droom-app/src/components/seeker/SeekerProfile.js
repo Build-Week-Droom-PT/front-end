@@ -45,10 +45,13 @@ function SeekerProfile(props) {
   const [variable, setVariable] = useState("");
 
   useEffect(() => {
-    setVariable("users");
+    setVariable("seekers/1");
     console.log(variable);
     axios
-      .get(`https://droom-pt-bw.herokuapp.com/${variable}`)
+      .get(
+        `https://droom-pt-bw.herokuapp.com/${variable}
+      `
+      )
       .then(res => {
         console.log(res);
       })
@@ -58,11 +61,7 @@ function SeekerProfile(props) {
   }, [variable]);
   return (
     <div>
-      <SeekerHeader data={userData} />
-      <Route
-        path="/update-seeker-profile"
-        component={SeekerProfileUpdateWithRouter}
-      />
+      <SeekerHeader path="/" data={userData} />
       <h1>{userData.name}</h1>
     </div>
   );
