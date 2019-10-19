@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+
+import LogOut from "../Forms/LogOut";
+
 import {
   Collapse,
   Navbar,
@@ -9,9 +12,8 @@ import {
   NavItem
 } from "reactstrap";
 
-const SeekerHeader = props => {
-  console.log(props.data);
-  const user = props.data.name;
+const SeekerHeader = ({ props, userData }) => {
+  console.log(userData.name);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -20,7 +22,7 @@ const SeekerHeader = props => {
     <div>
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">
-          {`Welcome, ${user}`}
+          {`Welcome, ${userData.name}`}
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
@@ -30,6 +32,11 @@ const SeekerHeader = props => {
             </NavItem>
             <NavItem>
               <NavLink to="/update-seeker-profile">Udate Profile</NavLink>
+            </NavItem>
+            <NavItem>
+              <a href="#" onClick={LogOut()}>
+                Log Out
+              </a>
             </NavItem>
           </Nav>
         </Collapse>

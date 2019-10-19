@@ -3,16 +3,7 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router";
 import SeekerHeader from "../seeker/SeekerHeader";
-import SeekerProfileUpdateWithRouter from "./SeekerProfileUpdate";
-
-// export default function HomePage() {
-//   if(localStorage.getItem('token')) {
-//   return (
-//     <h1> HomePage</h1>
-//   )
-//   }
-//   else {window.location.href="/"}
-// }
+// import LogOut from "../Forms/LogOut";
 
 function SeekerProfile(props) {
   console.log(props);
@@ -38,31 +29,32 @@ function SeekerProfile(props) {
     }
   ]);
 
-  //   const userData = dummyData.find(
-  //     user => user.id === Number(props.match.params.id)
-  //   );
+  const user = Number(props.match.params.id);
 
-  //   const [variable, setVariable] = useState("");
+  const [userData, setSetUserData] = useState({});
 
-  //   useEffect(() => {
-  //     setVariable("seekers/1");
-  //     console.log(variable);
-  //     axios
-  //       .get(
-  //         `https://droom-pt-bw.herokuapp.com/${variable}
-  //       `
-  //       )
-  //       .then(res => {
-  //         console.log(res);
-  //       })
-  //       .catch(err => {
-  //         console.log(err);
-  //       });
-  //   }, [variable]);
+  useEffect(() => {
+    axios
+      .get(
+        `https://droom-pt-bw.herokuapp.com/seekers/${user}
+        `
+      )
+      .then(res => {
+        console.log(res);
+        setSetUserData(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, [user]);
+
+  console.log(userData);
   return (
     <div>
-      {/* <SeekerHeader path="/"  /> */}
-      <h1>hello</h1>
+      <SeekerHeader {...props} userData={userData} path="/" />
+      {/* <a href="#" onClick={LogOut()}> */}
+      {/* Log Out
+      </a> */}
     </div>
   );
 }
