@@ -38,31 +38,31 @@ function SeekerProfile(props) {
     }
   ]);
 
-  const userData = dummyData.find(
-    user => user.id === Number(props.match.params.id)
-  );
+  //   const userData = dummyData.find(
+  //     user => user.id === Number(props.match.params.id)
+  //   );
 
-  const [variable, setVariable] = useState("");
+  //   const [variable, setVariable] = useState("");
 
-  useEffect(() => {
-    setVariable("seekers/1");
-    console.log(variable);
-    axios
-      .get(
-        `https://droom-pt-bw.herokuapp.com/${variable}
-      `
-      )
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, [variable]);
+  //   useEffect(() => {
+  //     setVariable("seekers/1");
+  //     console.log(variable);
+  //     axios
+  //       .get(
+  //         `https://droom-pt-bw.herokuapp.com/${variable}
+  //       `
+  //       )
+  //       .then(res => {
+  //         console.log(res);
+  //       })
+  //       .catch(err => {
+  //         console.log(err);
+  //       });
+  //   }, [variable]);
   return (
     <div>
-      <SeekerHeader path="/" data={userData} />
-      <h1>{userData.name}</h1>
+      {/* <SeekerHeader path="/"  /> */}
+      <h1>hello</h1>
     </div>
   );
 }
