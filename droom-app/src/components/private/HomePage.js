@@ -1,6 +1,7 @@
 import React from "react";
-import LogIn from "../Forms/LogIn";
-
+import PrivateRoute from "../private/PrivateRoute";
+import CompanyHomePage from "../company/CompanyHomePage";
+import SeekerHomePage from "../seeker/SeekerHomePage";
 
 // export default function HomePage() {
 //   if(localStorage.getItem('token')) {
@@ -13,7 +14,10 @@ import LogIn from "../Forms/LogIn";
 
 export default function HomePage() {
   return (
-    <h1> HomePage</h1>
-  )
- }
-
+    <div>
+      <h1> HomePage</h1>
+      <PrivateRoute path="homepage/company" component={CompanyHomePage} />
+      <PrivateRoute path="homepage/job-seeker" component={SeekerHomePage} />
+    </div>
+  );
+}

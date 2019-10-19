@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import SeekerSignUp from "../seeker/seekerSignUp/SeekerSignUp";
 // import PrivateRoute from "../private/PrivateRoute";
 // import SeekerCreateProfile from "../seeker/seekerSignUp/SeekerCreateProfile";
 
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const initialState = {
   username: "",
   password: ""
-}
+};
 
 const LogIn = () => {
   const [loginData, setLoginData] = useState(initialState);
@@ -19,19 +19,20 @@ const LogIn = () => {
 
     axiosWithAuth()
       .post("/login", loginData)
-      .then( res => {
-        console.log(res)
-        localStorage.setItem('token', res.data.payload)
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
       })
       .then(
-        localStorage.getItem('token') ?  window.location.href="/homepage" : console.log('token')
+        localStorage.getItem("token")
+          ? (window.location.href = "/homepage")
+          : console.log("token")
       )
       .catch(err => {
-        console.log(err)
-      })
-    
-    setLoginData(initialState);
+        console.log(err);
+      });
 
+    setLoginData(initialState);
 
     // return (
     //   <PrivateRoute
@@ -43,7 +44,9 @@ const LogIn = () => {
     // );
   };
 
+  //   useEffect(() => {}, []);
   const handleChange = e => {
+    console.log(loginData);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
@@ -64,9 +67,7 @@ const LogIn = () => {
           onChange={handleChange}
           value={loginData.password}
         />
-        <button className="button">
-          Log In
-        </button>
+        <button className="button">Log In</button>
       </form>
     </div>
   );
