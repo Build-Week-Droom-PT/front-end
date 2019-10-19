@@ -21,6 +21,8 @@ const LogIn = () => {
       .post("/login", loginData)
       .then(res => {
         console.log(res);
+        // isCompany is a boolean that is returned in the res, could be useful for dynamically routing
+        console.log(res.data.isCompany);
         localStorage.setItem("token", res.data.payload);
       })
       .then(
@@ -46,7 +48,6 @@ const LogIn = () => {
 
   //   useEffect(() => {}, []);
   const handleChange = e => {
-    console.log(loginData);
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
