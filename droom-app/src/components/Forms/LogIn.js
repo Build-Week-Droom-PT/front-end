@@ -10,7 +10,6 @@ const initialState = {
 const LogIn = () => {
   const [loginData, setLoginData] = useState(initialState);
   const [userID, setUserID] = useState({});
-  const [userType, setUserType] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,28 +20,21 @@ const LogIn = () => {
       .post("/login", loginData)
       .then(res => {
         console.log(res);
-        console.log(res.data.is);
-        
-        // setUserType(res.data.isCompany);
-        // setUserID(res.data);
-        // if (userType) {
-        //   seek = "companies";
-        // } else {
-        //   seek = "seekers";
-        // }
+        console.log(res.data.id);
+        const id = res.data.id;
+        setUserID(res.data);
 
         localStorage.setItem("token", res.data.payload);
 
         if (res.data.isCompany) {
-          window.location.href = "/companyhomepage"
+          window.location.href = "/companyhomepage";
         } else {
-          window.location.href ="/seekerhomepage"
+          window.location.href = /*"/seekerhomepage"*/ `/seekers/${id}`;
         }
 
         // localStorage.getItem("token")
         //   ? (window.location.href = `/${seek}/:id`)
         //   : console.log("token");
-
       })
       // .then(
       //   localStorage.getItem("token")
@@ -65,7 +57,6 @@ const LogIn = () => {
     //   />
     // );
   };
-  console.log(userType);
   const handleChange = e => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };

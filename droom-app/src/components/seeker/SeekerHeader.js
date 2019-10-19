@@ -9,9 +9,9 @@ import {
   NavItem
 } from "reactstrap";
 
-const SeekerHeader = props => {
-  console.log(props.data);
-  const user = props.data.name;
+const SeekerHeader = ({ props, userData }) => {
+  console.log(userData.name);
+  //   const user = props.data.name;
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -20,7 +20,7 @@ const SeekerHeader = props => {
     <div>
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">
-          {`Welcome, ${user}`}
+          {`Welcome, ${userData.name}`}
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
