@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react";
-// import SeekerSignUp from "../seeker/seekerSignUp/SeekerSignUp";
-// import PrivateRoute from "../private/PrivateRoute";
-// import SeekerCreateProfile from "../seeker/seekerSignUp/SeekerCreateProfile";
+import React, { useState } from "react";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
@@ -12,6 +9,8 @@ const initialState = {
 
 const LogIn = () => {
   const [loginData, setLoginData] = useState(initialState);
+  const [userID, setUserID] = useState({});
+  const [userType, setUserType] = useState();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,13 +20,20 @@ const LogIn = () => {
       .post("/login", loginData)
       .then(res => {
         console.log(res);
-        // isCompany is a boolean that is returned in the res, could be useful for dynamically routing
-        console.log(res.data.isCompany);
+        console.log(res.data.is);
+        setUserType(res.data.isCompany);
+        setUserID(res.data);
+        if (userType) {
+          setUserType("companies");
+        } else {
+          setUserType("seekers");
+        }
         localStorage.setItem("token", res.data.payload);
       })
       .then(
         localStorage.getItem("token")
-          ? (window.location.href = "/homepage")
+          ? // ? (window.location.href = "/homepage")
+            (window.location.href = `/${userType}/${userID}`)
           : console.log("token")
       )
       .catch(err => {
@@ -38,15 +44,14 @@ const LogIn = () => {
 
     // return (
     //   <PrivateRoute
-    //     path="/seeker-sign-up"
+    //     path="/seekers/:id"
     //     render={props => {
-    //       return <SeekerSignUp />;
+    //       return <SeekerProfile {...props} userId={userID} />;
     //     }}
     //   />
     // );
   };
-
-  //   useEffect(() => {}, []);
+  console.log(userType);
   const handleChange = e => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
