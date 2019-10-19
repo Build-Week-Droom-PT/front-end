@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LogOut from "../Forms/LogOut";
 // import axios from "axios";
 // import PrivateRoute from "../private/PrivateRoute";
 // import CompanyHomePage from "../company/CompanyHomePage";
@@ -59,6 +60,7 @@ import React, { useState, useEffect } from "react";
 export default function SeekerHomePage() {
     return (
         <div>
+            <a href="#" onClick={LogOut()}>Log Out</a>
             <h1>You are a seeker!</h1>
         </div>
     )
