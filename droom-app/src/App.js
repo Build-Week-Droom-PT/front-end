@@ -21,7 +21,11 @@ function App() {
         <Route exact path="/login" component={LogIn} />
         <Route exact path="/" component={HomePage} />
         <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} />
-        <PrivateRoute exact path="/companyhomepage" component={CompanyHomePage} />
+        <PrivateRoute
+          exact
+          path="/companyhomepage"
+          component={CompanyHomePage}
+        />
 
         <PrivateRoute
           exact
@@ -33,7 +37,7 @@ function App() {
           path="/companies/:id"
           component={CompanyProfileWithRouter}
         />
-        <Route
+        <PrivateRoute
           path="/update-seeker-profile"
           component={SeekerProfileUpdateWithRouter}
         />

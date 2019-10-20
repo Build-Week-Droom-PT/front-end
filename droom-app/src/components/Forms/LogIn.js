@@ -14,7 +14,6 @@ const LogIn = () => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(loginData);
-    let seek = "";
 
     axiosWithAuth()
       .post("/login", loginData)
@@ -29,33 +28,15 @@ const LogIn = () => {
         if (res.data.isCompany) {
           window.location.href = "/companyhomepage";
         } else {
-          window.location.href = /*"/seekerhomepage"*/ `/seekers/${id}`;
+          window.location.href = `/seekers/${id}`;
+          // window.location.href = "/seekerhomepage";
         }
-
-        // localStorage.getItem("token")
-        //   ? (window.location.href = `/${seek}/:id`)
-        //   : console.log("token");
       })
-      // .then(
-      //   localStorage.getItem("token")
-      //     ? (window.location.href = "/homepage")
-      //     : // (window.location.href = `/${userType}/${userID}`)
-      //       console.log("token")
-      // )
       .catch(err => {
         console.log(err);
       });
 
     setLoginData(initialState);
-
-    // return (
-    //   <PrivateRoute
-    //     path="/seekers/:id"
-    //     render={props => {
-    //       return <SeekerProfile {...props} userId={userID} />;
-    //     }}
-    //   />
-    // );
   };
   const handleChange = e => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
