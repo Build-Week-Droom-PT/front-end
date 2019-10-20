@@ -19,7 +19,7 @@
   color: #09d3ac;
 } */
 
-/* .form {
+.form {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
@@ -34,8 +34,9 @@
   width: 30%;
   border-radius: 5px;
   /* margin: 0 auto; */
-/* align-self: flex-end;
-} */
-*/ .errors {
+  align-self: flex-end;
+}
+
+.errors {
   color: red;
 }

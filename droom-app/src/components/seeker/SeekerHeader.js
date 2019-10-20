@@ -22,7 +22,7 @@ const SeekerHeader = ({ props, userData }) => {
     <div>
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">
-          {`Welcome, ${userData.name}`}
+          {`Welcome ${userData.name || ""}`}
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>

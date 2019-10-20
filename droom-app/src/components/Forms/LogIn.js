@@ -28,7 +28,7 @@ const LogIn = () => {
         if (res.data.isCompany) {
           window.location.href = "/companyhomepage";
         } else {
-          window.location.href = `/seekers/${userID.user_id}`;
+          window.location.href = `/seekers/${id}`;
           // window.location.href = "/seekerhomepage";
         }
       })

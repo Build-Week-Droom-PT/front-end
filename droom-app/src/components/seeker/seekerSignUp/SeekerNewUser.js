@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SeekerProfileUpdate = ({
+const SeekerNewUser = ({
   errors,
   touched,
   isSubmitting,
@@ -13,15 +13,17 @@ const SeekerProfileUpdate = ({
   //   console.log(props);
   return (
     <div>
-      <h1>Update Your Profile</h1>
+      <h1>Create An Account</h1>
       <Form className="form">
         <Field
           component="input"
           type="text"
-          name="name"
-          placeholder="Full Name"
+          name="username"
+          placeholder="User Name"
         />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+        {touched.username && errors.username && (
+          <p className="errors">{errors.username}</p>
+        )}
         <Field
           component="input"
           type="email"
@@ -49,7 +51,7 @@ const SeekerProfileUpdate = ({
         {touched.verifyPassword && errors.verifyPassword && (
           <p className="errors">{errors.verifyPassword}</p>
         )}
-        <Field
+        {/* <Field
           component="input"
           type="text"
           name="location"
@@ -84,7 +86,19 @@ const SeekerProfileUpdate = ({
         />
         {touched.picture && errors.picture && (
           <p className="errors">{errors.picture}</p>
-        )}
+        )} */}
+        <label className="button">
+          Terms and Conditions
+          <Field
+            component="input"
+            type="checkbox"
+            checked={values.terms}
+            name="terms"
+          />
+          {touched.terms && errors.terms && (
+            <p className="errors">{errors.terms}</p>
+          )}
+        </label>
         <button className="button" type="submit" disabled={isSubmitting}>
           Submit
         </button>
@@ -95,38 +109,47 @@ const SeekerProfileUpdate = ({
 
 export default withFormik({
   mapPropsToValues({
-    name,
+    username,
     email,
     password,
     verifyPassword,
-    location,
-    skills,
-    description,
-    picture
+    terms
+    // location,
+    // skills,
+    // description,
+    // picture
   }) {
     return {
-      name: name || "",
+      username: username || "",
       email: email || "",
       password: password || "",
       verifyPassword: verifyPassword || "",
-      location: location || "",
-      skills: skills || "",
-      description: description || "",
-      picture: picture || ""
+      terms: terms || false,
+      // location: location || "",
+      // skills: skills || "",
+      // description: description || "",
+      // picture: picture || "",
+      isCompany: false
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().email("Please Enter A Valid Email"),
-    password: Yup.string().min(8, "Password must be 8 characters or longer"),
-    verifyPassword: Yup.string().min(
-      8,
-      "Password must be 8 characters or longer and should match"
-    ),
-    name: Yup.string(),
-    location: Yup.string(),
-    skills: Yup.string(),
-    description: Yup.string(),
-    upload: Yup.mixed()
+    email: Yup.string()
+      .email("Please Enter A Valid Email")
+      .required("Required"),
+    password: Yup.string()
+      .min(8, "Password must be 8 characters or longer")
+      .required("Required"),
+    verifyPassword: Yup.string()
+      .min(8, "Password must be 8 characters or longer and should match")
+      .required("Required"),
+    username: Yup.string().required("Required"),
+    // location: Yup.string().required("Required"),
+    terms: Yup.boolean()
+      .required("Required")
+      .oneOf([true], "Must Accept Terms and Conditions")
+    // skills: Yup.string().required(),
+    // description: Yup.string().required(),
+    // upload: Yup.mixed()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     if (values.password !== values.verifyPassword) {
@@ -134,8 +157,8 @@ export default withFormik({
       setSubmitting(false);
     } else {
       axios
-
-        .put("https://droom-pt-bw.herokuapp.com/seekers", values)
+        // https://droom-pt-bw.herokuapp.com/register
+        .post("https://reqres.in/api/users", values)
         .then(res => {
           console.log(res);
           resetForm();
@@ -147,4 +170,4 @@ export default withFormik({
         });
     }
   }
-})(SeekerProfileUpdate);
+})(SeekerNewUser);

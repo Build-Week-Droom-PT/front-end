@@ -42,27 +42,54 @@ function SearchJobCard() {
     color: #2c3a74;
     font-size: 2.6rem;
   `;
+  function likeClickHandler(e) {
+    e.preventDefault();
+    // const userId = props.user_id /*psuedocode */
+    // const listingId = props.listing_id /*psuedocode */
+    // const [userData, setSetUserData] = useState({});
+    // useEffect(() => {
+    //   axios
+    //     .get(
+    //       `https://droom-pt-bw.herokuapp.com/match/seeker/${userId}/match/job/${listingId}
+    //         `
+    //     )
+    //     .then(res => {
+    //       // console.log(res);
+    //       setSetUserData(res.data);
+    //     })
+    //     .catch(err => {
+    //       console.log(err);
+    //     });
+    // }, [userData]);
+    console.log(`You liked this job!`);
+  }
+
+  function passClickHandler(e) {
+    e.preventDefault();
+    //delete job card here
+    console.log(`No thanks for this job!`);
+  }
   console.log(typeof jobs);
   return (
     <div>
       {jobs.map(job => (
-        <CardStyling id={job.user_id}>
+        <CardStyling key={Date.now()}>
           <h3>{job.company}</h3>
           <h4>{job.jobtitle}</h4>
           <h4>${job.salary}</h4>
           <h4>{job.location}</h4>
-          <h4>{job.descrition}</h4>
+          <h4>{job.description}</h4>
           <LinkStyling>
-            <Link href="#">
+            <button onClick={likeClickHandler}>
               <FontColor>
                 <i class="far fa-thumbs-up"></i>
               </FontColor>
-            </Link>
-            <Link href="#">
+            </button>
+            <button onClick={passClickHandler}>
               <FontColor>
                 <i class="far fa-thumbs-down"></i>
               </FontColor>
-            </Link>
+            </button>
           </LinkStyling>
         </CardStyling>
       ))}
