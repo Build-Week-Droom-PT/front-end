@@ -3,7 +3,6 @@ import axios from "axios";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router";
 import SeekerHeader from "../seeker/SeekerHeader";
-import PrivateRoute from "../private/PrivateRoute";
 import SeekerMatches from "./SeekerMatches";
 import SearchJobs from "./SearchJobs/SearchJobs";
 // import LogOut from "../Forms/LogOut";
