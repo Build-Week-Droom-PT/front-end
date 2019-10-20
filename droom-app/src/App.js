@@ -20,7 +20,7 @@ function App() {
       <div>
         <Route exact path="/login" component={LogIn} />
         <Route exact path="/" component={HomePage} />
-        <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} />
+        {/* <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} /> */}
         <PrivateRoute
           exact
           path="/companyhomepage"
@@ -36,10 +36,6 @@ function App() {
           exact
           path="/companies/:id"
           component={CompanyProfileWithRouter}
-        />
-        <PrivateRoute
-          path="/update-seeker-profile"
-          component={SeekerProfileUpdateWithRouter}
         />
       </div>
     </Router>

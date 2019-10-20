@@ -42,16 +42,17 @@ function SearchJobCard() {
     color: #2c3a74;
     font-size: 2.6rem;
   `;
+
   console.log(typeof jobs);
   return (
     <div>
       {jobs.map(job => (
-        <CardStyling id={job.user_id}>
+        <CardStyling key={Date.now()}>
           <h3>{job.company}</h3>
           <h4>{job.jobtitle}</h4>
           <h4>${job.salary}</h4>
           <h4>{job.location}</h4>
-          <h4>{job.descrition}</h4>
+          <h4>{job.description}</h4>
           <LinkStyling>
             <Link href="#">
               <FontColor>
