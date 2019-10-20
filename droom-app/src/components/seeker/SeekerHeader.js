@@ -39,7 +39,9 @@ const SeekerHeader = ({ props, userData }) => {
               <Link to={`/${userData.user_id}/matches`}>Matches</Link>
             </NavItem>
             <NavItem>
-              <Link to={`/search`}>Search Jobs</Link>
+              <Link to={`/seekers/${userData.user_id}/search`}>
+                Search Jobs
+              </Link>
             </NavItem>
             <NavItem>
               <a href="#" onClick={LogOut()}>

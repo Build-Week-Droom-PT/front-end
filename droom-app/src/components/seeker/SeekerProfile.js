@@ -5,6 +5,7 @@ import { withRouter } from "react-router";
 import SeekerHeader from "../seeker/SeekerHeader";
 import SeekerMatches from "./SeekerMatches";
 import SearchJobs from "./SearchJobs/SearchJobs";
+import SeekerCreateProfile from "./seekerSignUp/SeekerCreateProfile";
 // import LogOut from "../Forms/LogOut";
 
 function SeekerProfile(props) {
@@ -48,6 +49,7 @@ function SeekerProfile(props) {
   return (
     <div>
       <SeekerHeader {...props} userData={userData} />
+      <SeekerCreateProfile>Create a profile</SeekerCreateProfile>
       <Route
         path="/"
         render={props => <SeekerMatches {...props} userInfo={props.userData} />}
