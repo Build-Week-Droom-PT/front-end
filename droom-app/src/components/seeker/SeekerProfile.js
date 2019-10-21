@@ -74,23 +74,28 @@ function SeekerProfile() {
           <h4>{location}</h4>
         </CardStyling>
         <PrivateRoute path="/" component={SeekerMatches} />
-        {/* <Route path="/" render={() => <SeekerNewUser />} />
-    <Route path="/" render={() => <SeekerCreateProfile />} />
-    <Route path="/" render={() => <SeekerProfileUpdate />} />
-    <Route path="/" render={() => <SeekerMatches />} />
-    <Route path={`/`} render={() => <SearchJobs />} /> */}
-        {/* <a href="#" onClick={LogOut()}> */}
-        {/* Log Out
-    </a> */}
       </div>
     );
   } else {
-    return <span></span>;
+    return <span>No Profile</span>;
   }
-
-  // return <div></div>;
 }
 
 const SeekerProfileWithRouter = withRouter(SeekerProfile);
 
 export default SeekerProfileWithRouter;
+
+{
+  /* <Route path="/" render={() => <SeekerNewUser />} />
+    <Route path="/" render={() => <SeekerCreateProfile />} />
+    <Route path="/" render={() => <SeekerProfileUpdate />} />
+    <Route path="/" render={() => <SeekerMatches />} />
+    <Route path={`/`} render={() => <SearchJobs />} /> */
+}
+{
+  /* <a href="#" onClick={LogOut()}> */
+}
+{
+  /* Log Out
+    </a> */
+}
