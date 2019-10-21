@@ -63,7 +63,7 @@
 // }
 
 // export default SeekerMatches;
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import styled from "styled-components";
 // import { jobs } from "../seeker/data";
@@ -102,33 +102,36 @@ function SeekerMatches(props) {
     sendRequest(proxy + url, "SEND");
     console.log(isLoadng, data, error, sendRequest);
   }, [sendRequest]);
-
-  if (data) {
+  //
+  console.log(data);
+  const dataChecker = data;
+  if (dataChecker) {
     {
-      data.map(job => {
+      // const dataReturned = data;
+      // console.log(dataReturned);
+      dataChecker.map(job => {
         console.log(job.company);
         if (job) {
           console.log(`you have a job`);
           return (
             <div>
               <CardStyling key={Date.now()}>
-                <h3>{job.company}</h3>
-                <h4>{job.jobtitle}</h4>
-                <h4>${job.salary}</h4>
-                <h4>{job.location}</h4>
-                <h4>{job.description}</h4>
+                <h3>{console.log(job.company)}</h3>
+                <h4>{console.log(job.jobtitle)}</h4>
+                <h4>${console.log(job.salary)}</h4>
+                <h4>{console.log(job.location)}</h4>
+                <h4>{console.log(job.description)}</h4>
               </CardStyling>
             </div>
           );
-        } else {
-          console.log(`no matches yet`);
-          return <p>Nope</p>;
         }
       });
     }
   } else {
     return <h1> No Matches from if (data)</h1>;
   }
+
+  return <div>what is the problem?</div>;
 }
 
 export default SeekerMatches;
