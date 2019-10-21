@@ -65,6 +65,7 @@ function SeekerProfile() {
     return (
       <div>
         {/* <SeekerHeader /> */}
+        <PrivateRoute path="/" component={SeekerHeader} />
         <h1>I'm Your Profile</h1>
         <CardStyling key={Date.now()}>
           <h3>{name}</h3>
@@ -75,7 +76,7 @@ function SeekerProfile() {
           <h3>Current Location</h3>
           <h4>{location}</h4>
         </CardStyling>
-        <PrivateRoute path="/" component={SeekerMatches} />
+        <PrivateRoute exact path="/matches" component={SeekerMatches} />
       </div>
     );
   } else {
