@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function LogOut() {
-    localStorage.clear();
+    localStorage.removeItem('token');
     // window.location.href = "/";
 
 }

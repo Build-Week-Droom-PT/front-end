@@ -6,7 +6,7 @@ import styled from "styled-components";
 import SeekerHeader from "../seeker/SeekerHeader";
 import SeekerMatches from "./SeekerMatches";
 import SearchJobs from "./SearchJobs/SearchJobs";
-import SeekerCreateProfile from "./seekerSignUp/SeekerCreateProfile";
+import SeekerCreateProfile from "./seekerSignUp/seekerCreateProfile";
 import SeekerProfileUpdate from "./SeekerProfileUpdate";
 import SeekerNewUser from "./seekerSignUp/SeekerNewUser";
 import useHttp from "./Hooks/http";
@@ -58,7 +58,7 @@ function SeekerProfile() {
   // let userData = {};
   if (data) {
     const { id, name, description, skills, location } = data;
-    // console.log(data.name);
+    console.log(data.name);
     // userData = data.name;
     return (
       <div>
