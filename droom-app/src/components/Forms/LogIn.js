@@ -23,10 +23,11 @@ const LogIn = () => {
         const id = res.data.id;
         setUserID(res.data);
 
-        localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
 
         if (res.data.isCompany) {
           window.location.href = "/companyhomepage";
+          
         } else {
           window.location.href = `/seekers/${id}`;
           // window.location.href = "/seekerhomepage";
