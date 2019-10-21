@@ -4,7 +4,7 @@ import LogOut from "../Forms/LogOut"
 export default function SeekerHomePage() {
     return (
         <div>
-            <a href="#" >Log Out</a>
+            <LogOut />
             <h1>You are a company!</h1>
         </div>
     )
