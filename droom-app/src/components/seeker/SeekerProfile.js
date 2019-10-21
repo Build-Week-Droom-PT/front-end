@@ -10,6 +10,7 @@ import SeekerCreateProfile from "./seekerSignUp/seekerCreateProfile";
 import SeekerProfileUpdate from "./SeekerProfileUpdate";
 import SeekerNewUser from "./seekerSignUp/SeekerNewUser";
 import useHttp from "./Hooks/http";
+import axios from "axios";
 // import LogOut from "../Forms/LogOut";
 
 function SeekerProfile() {
@@ -55,6 +56,7 @@ function SeekerProfile() {
     color: #2c3a74;
     font-size: 2.6rem;
   `;
+
   // let userData = {};
   if (data) {
     const { id, name, description, skills, location } = data;
