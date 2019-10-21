@@ -13,15 +13,15 @@ import useHttp from "./Hooks/http";
 import axios from "axios";
 // import LogOut from "../Forms/LogOut";
 
-function SeekerProfile() {
-  // const user = Number(props.match.params.id);
+function SeekerProfile(props) {
+  const user = Number(props.match.params.id);
+  console.log(user);
   const { isLoadng, data, error, sendRequest } = useHttp();
   // const api = ``;
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/seekers/1`;
+    const url = `https://droom-pt-bw.herokuapp.com/seekers/${user}`;
 
-    //  this.getCharacters(proxy + url)
     sendRequest(proxy + url, "SEND");
     console.log(isLoadng, data, error, sendRequest);
   }, [sendRequest]);
@@ -57,11 +57,8 @@ function SeekerProfile() {
     font-size: 2.6rem;
   `;
 
-  // let userData = {};
   if (data) {
     const { id, name, description, skills, location } = data;
-    // console.log(data.name);
-    // userData = data.name;
     return (
       <div>
         {/* <SeekerHeader /> */}
