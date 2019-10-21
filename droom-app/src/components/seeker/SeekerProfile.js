@@ -59,11 +59,6 @@ function SeekerProfile(props) {
 
   if (data) {
     const { id, name, description, skills, location } = data;
-<<<<<<< HEAD
-=======
-    console.log(data.name);
-    // userData = data.name;
->>>>>>> 896fb73c66e0ab8f377ce2f2382dced5fe043467
     return (
       <div>
         {/* <SeekerHeader /> */}
