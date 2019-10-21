@@ -20,7 +20,8 @@ const useHttp = () => {
   const [httpState, dispatchHttp] = useReducer(httpReducer, {
     loading: false,
     error: null,
-    data: null
+    data: null,
+    userData: null
   });
   //   const typeGetter = (type) => {
 
@@ -49,7 +50,7 @@ const useHttp = () => {
   }, []); //function useCallback is returning
 
   return {
-    // isLoading: httpState.loading,
+    isLoading: httpState.loading,
     data: httpState.data,
     error: httpState.error,
     sendRequest: sendRequest
