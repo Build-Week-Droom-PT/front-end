@@ -96,7 +96,7 @@ function SeekerMatches(props) {
   // const api = ``;
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/matched/seeker/1
+    const url = `https://droom-pt-bw.herokuapp.com/matched/listings
     `;
 
     sendRequest(proxy + url, "SEND");
