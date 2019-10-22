@@ -45,7 +45,7 @@ function App(props) {
           path="/companies/:id"
           component={CompanyProfileWithRouter}
         />{" "}
-        <PrivateRoute exact path="/matches" component={SeekerMatches} />
+        {/* <PrivateRoute exact path="/matched/" component={SeekerMatches} /> */}
         {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
         <PrivateRoute
           exact

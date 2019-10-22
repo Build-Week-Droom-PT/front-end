@@ -3,6 +3,7 @@ import styled from "styled-components";
 import useHttp from "./Hooks/http";
 
 function SeekerMatches(props) {
+  console.log(props);
   const CardStyling = styled.div`
     width: 75%;
     display: flex;
@@ -22,6 +23,8 @@ function SeekerMatches(props) {
     font-size: 1.6rem;
   `;
 
+  // const { isLoadng, data, error, sendRequest } = useHttp();
+
   const { data, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -29,7 +32,7 @@ function SeekerMatches(props) {
 
     sendRequest(proxy + url, "SEND");
   }, [sendRequest]);
-  //useEffect - sendRequest
+  //
 
   if (data) {
     return (
