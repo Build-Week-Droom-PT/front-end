@@ -52,15 +52,15 @@ const SeekerNewUser = ({
           <p className="errors">{errors.verifyPassword}</p>
         )}
         <label className="button">
-          Terms and Conditions
+          Are You an Employer?
           <Field
             component="input"
             type="checkbox"
-            checked={values.terms}
-            name="terms"
+            checked={values.company}
+            name="company"
           />
-          {touched.terms && errors.terms && (
-            <p className="errors">{errors.terms}</p>
+          {touched.company && errors.company && (
+            <p className="errors">{errors.company}</p>
           )}
         </label>
         <button className="button" type="submit" disabled={isSubmitting}>
@@ -72,13 +72,13 @@ const SeekerNewUser = ({
 };
 
 export default withFormik({
-  mapPropsToValues({ username, email, password, verifyPassword, terms }) {
+  mapPropsToValues({ username, email, password, verifyPassword, company }) {
     return {
       username: username || "",
       email: email || "",
       password: password || "",
       verifyPassword: verifyPassword || "",
-      terms: terms || false,
+      company: company || false,
       isCompany: false
     };
   },
@@ -93,9 +93,9 @@ export default withFormik({
       .min(8, "Password must be 8 characters or longer and should match")
       .required("Required"),
     username: Yup.string().required("Required"),
-    terms: Yup.boolean()
+    company: Yup.boolean()
       .required("Required")
-      .oneOf([true], "Must Accept Terms and Conditions")
+      .oneOf([true], "Must Accept company and Conditions")
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     if (values.password !== values.verifyPassword) {

@@ -75,7 +75,8 @@ export default withFormik({
       location: location || "",
       skills: skills || "",
       description: description || "",
-      picture: picture || ""
+      picture: picture || "",
+      user_id: Date.now()
     };
   },
   validationSchema: Yup.object().shape({
@@ -89,22 +90,19 @@ export default withFormik({
     picture: Yup.mixed()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    if (values.password !== values.verifyPassword) {
-      setErrors({ verifyPassword: "Passwords do not match" });
-      setSubmitting(false);
-    } else {
-      axios
-        // https://droom-pt-bw.herokuapp.com/seekers
-        .post("https://reqres.in/api/seekers", values)
-        .then(res => {
-          console.log(res);
-          resetForm();
-          setSubmitting(false);
-        })
-        .catch(err => {
-          console.log(err);
-          setSubmitting(false);
-        });
-    }
+    const proxy = "https://cors-anywhere.herokuapp.com/";
+    const url = `https://droom-pt-bw.herokuapp.com/seekers`;
+    axios
+      // https://droom-pt-bw.herokuapp.com/seekers
+      .post(proxy + url, values)
+      .then(res => {
+        console.log(res);
+        resetForm();
+        setSubmitting(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setSubmitting(false);
+      });
   }
 })(SeekerCreateProfile);
