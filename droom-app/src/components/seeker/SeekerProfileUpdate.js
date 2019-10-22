@@ -137,12 +137,12 @@ export default withFormik({
 
         .put("https://droom-pt-bw.herokuapp.com/seekers", values)
         .then(res => {
-          console.log(res);
+          // console.log(res);
           resetForm();
           setSubmitting(false);
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
           setSubmitting(false);
         });
     }

@@ -51,42 +51,6 @@ const SeekerNewUser = ({
         {touched.verifyPassword && errors.verifyPassword && (
           <p className="errors">{errors.verifyPassword}</p>
         )}
-        {/* <Field
-          component="input"
-          type="text"
-          name="location"
-          placeholder="City, State"
-        />
-        {touched.location && errors.location && (
-          <p className="errors">{errors.location}</p>
-        )}
-        <Field
-          component="input"
-          type="text"
-          name="skills"
-          placeholder="Skills"
-        />
-        {touched.skills && errors.skills && (
-          <p className="errors">{errors.skills}</p>
-        )}
-        <Field
-          component="input"
-          type="text"
-          name="description"
-          placeholder="Description"
-        />
-        {touched.description && errors.description && (
-          <p className="errors">{errors.description}</p>
-        )}
-        <Field
-          component="input"
-          type="file"
-          name="picture"
-          placeholder="Upload A Picture"
-        />
-        {touched.picture && errors.picture && (
-          <p className="errors">{errors.picture}</p>
-        )} */}
         <label className="button">
           Terms and Conditions
           <Field
@@ -108,27 +72,13 @@ const SeekerNewUser = ({
 };
 
 export default withFormik({
-  mapPropsToValues({
-    username,
-    email,
-    password,
-    verifyPassword,
-    terms
-    // location,
-    // skills,
-    // description,
-    // picture
-  }) {
+  mapPropsToValues({ username, email, password, verifyPassword, terms }) {
     return {
       username: username || "",
       email: email || "",
       password: password || "",
       verifyPassword: verifyPassword || "",
       terms: terms || false,
-      // location: location || "",
-      // skills: skills || "",
-      // description: description || "",
-      // picture: picture || "",
       isCompany: false
     };
   },
@@ -143,13 +93,9 @@ export default withFormik({
       .min(8, "Password must be 8 characters or longer and should match")
       .required("Required"),
     username: Yup.string().required("Required"),
-    // location: Yup.string().required("Required"),
     terms: Yup.boolean()
       .required("Required")
       .oneOf([true], "Must Accept Terms and Conditions")
-    // skills: Yup.string().required(),
-    // description: Yup.string().required(),
-    // upload: Yup.mixed()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     if (values.password !== values.verifyPassword) {
@@ -157,8 +103,7 @@ export default withFormik({
       setSubmitting(false);
     } else {
       axios
-        // https://droom-pt-bw.herokuapp.com/register
-        .post("https://reqres.in/api/users", values)
+        .post("https://droom-pt-bw.herokuapp.com/register", values)
         .then(res => {
           console.log(res);
           resetForm();

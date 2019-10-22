@@ -13,7 +13,7 @@ const LogIn = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(loginData);
+    console.log(loginData, userID);
 
     axiosWithAuth()
       .post("/login", loginData)
@@ -27,7 +27,6 @@ const LogIn = () => {
 
         if (res.data.isCompany) {
           window.location.href = "/companyhomepage";
-          
         } else {
           window.location.href = `/seekers/${id}`;
           // window.location.href = "/seekerhomepage";

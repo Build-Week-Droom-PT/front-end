@@ -1,5 +1,4 @@
-import { useReducer, useCallback, useEffect } from "react";
-import axios from "axios";
+import { useReducer, useCallback } from "react";
 
 const httpReducer = (httpState, action) => {
   switch (action.type) {
@@ -23,9 +22,6 @@ const useHttp = () => {
     data: null,
     userData: null
   });
-  //   const typeGetter = (type) => {
-
-  //   }
 
   const sendRequest = useCallback((url, { type }) => {
     dispatchHttp({ type: "SEND" });
@@ -34,8 +30,6 @@ const useHttp = () => {
       header: { "Content-type": "application/json" },
       body: JSON.stringify()
     })
-      // axios
-      //   .get(url)
       .then(response => {
         return response.json();
       })
