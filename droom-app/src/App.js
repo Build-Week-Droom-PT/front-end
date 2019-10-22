@@ -21,7 +21,8 @@ import Test from "./components/seeker/test";
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <Router>
       <div>
