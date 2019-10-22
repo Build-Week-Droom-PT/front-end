@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useHttp from "./Hooks/http";
 
-import LogOut from "../Forms/LogOut";
+// import LogOut from "../Forms/LogOut";
 
 import {
   Collapse,
@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 
 const SeekerHeader = props => {
-  // console.log(props);
+  console.log(props);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -26,7 +26,6 @@ const SeekerHeader = props => {
     const url = `https://droom-pt-bw.herokuapp.com/seekers/1`;
 
     sendRequest(proxy + url, "SEND");
-    console.log(isLoadng, data, error, sendRequest);
   }, [sendRequest]);
 
   return (
@@ -39,7 +38,16 @@ const SeekerHeader = props => {
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <Link to={`/matches`}>Matches</Link>
+              <Link to={`/seekers/1`}>Home</Link>
+            </NavItem>
+            <NavItem>
+              <Link to={`/matches`}>Your Matches</Link>
+            </NavItem>
+            <NavItem>
+              <Link to={`/search-jobs`}>Find a Job</Link>
+            </NavItem>
+            <NavItem>
+              <Link to={`/profile-update`}>Update Your Profile</Link>
             </NavItem>
           </Nav>
         </Collapse>

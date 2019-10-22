@@ -10,6 +10,13 @@ import CompanyProfileWithRouter from "./components/company/CompanyProfile";
 import HomePage from "./components/private/HomePage";
 import SeekerHomePage from "./components/seeker/SeekerHomePage";
 import CompanyHomePage from "./components/company/CompanyHomePage";
+import SeekerHeader from "./components/seeker/SeekerHeader";
+import SeekerMatches from "./components/seeker/SeekerMatches";
+import SearchJobs from "./components/seeker/SearchJobs/SearchJobs";
+import SeekerCreateProfile from "./components/seeker/seekerSignUp/SeekerCreateProfile";
+import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
+import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
+import Test from "./components/seeker/test";
 
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
@@ -26,7 +33,7 @@ function App() {
           path="/companyhomepage"
           component={CompanyHomePage}
         />
-
+        <PrivateRoute path="/" component={SeekerHeader} />
         <PrivateRoute
           exact
           path="/seekers/:id"
@@ -36,7 +43,20 @@ function App() {
           exact
           path="/companies/:id"
           component={CompanyProfileWithRouter}
+        />{" "}
+        <PrivateRoute exact path="/matches" component={SeekerMatches} />
+        {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
+        <PrivateRoute
+          exact
+          path="/create-profile"
+          component={SeekerCreateProfile}
         />
+        <PrivateRoute
+          exact
+          path="/profile-update/:user_id"
+          component={SeekerProfileUpdate}
+        />
+        <PrivateRoute exact path="/search-jobs" component={SearchJobs} />
       </div>
     </Router>
   );
