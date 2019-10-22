@@ -1,23 +1,20 @@
-import React, { useCallback, useEffect } from "react";
-import { Route } from "react-router-dom";
+import React, { useEffect } from "react";
+// import { Route } from "react-router-dom";
 import { withRouter } from "react-router";
 import PrivateRoute from "../private/PrivateRoute";
 import styled from "styled-components";
 import SeekerHeader from "../seeker/SeekerHeader";
 import SeekerMatches from "./SeekerMatches";
 import SearchJobs from "./SearchJobs/SearchJobs";
-import SeekerCreateProfile from "./seekerSignUp/seekerCreateProfile";
+import SeekerCreateProfile from "./seekerSignUp/SeekerCreateProfile";
 import SeekerProfileUpdate from "./SeekerProfileUpdate";
 import SeekerNewUser from "./seekerSignUp/SeekerNewUser";
 import useHttp from "./Hooks/http";
-import axios from "axios";
-// import LogOut from "../Forms/LogOut";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
   console.log(user);
   const { isLoadng, data, error, sendRequest } = useHttp();
-  // const api = ``;
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://droom-pt-bw.herokuapp.com/seekers/${user}`;
@@ -45,26 +42,31 @@ function SeekerProfile(props) {
     font-size: 1.6rem;
   `;
 
-  const LinkStyling = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 3%;
-    color: #2c3a74;
-  `;
+  // const LinkStyling = styled.div`
+  //   display: flex;
+  //   justify-content: space-between;
+  //   margin: 3%;
+  //   color: #2c3a74;
+  // `;
 
-  const FontColor = styled.div`
-    color: #2c3a74;
-    font-size: 2.6rem;
-  `;
+  // const FontColor = styled.div`
+  //   color: #2c3a74;
+  //   font-size: 2.6rem;
+  // `;
 
   if (data) {
     const { id, name, description, skills, location } = data;
     return (
       <div>
-        {/* <SeekerHeader /> */}
-        <PrivateRoute path="/" component={SeekerHeader} />
+        <SeekerHeader />
+        <PrivateRoute path="/" component={SeekerMatches} />
+        <PrivateRoute path="/" component={SeekerNewUser} />
+        <PrivateRoute path="/" component={SeekerCreateProfile} />
+        <PrivateRoute path="/" component={SeekerProfileUpdate} />
+        <PrivateRoute path="/" component={SearchJobs} />
+        <SearchJobs />
         <h1>I'm Your Profile</h1>
-        <CardStyling key={Date.now()}>
+        <CardStyling key={id}>
           <h3>{name}</h3>
           <h3>About Me</h3>
           <h4>{description}</h4>
@@ -73,7 +75,6 @@ function SeekerProfile(props) {
           <h3>Current Location</h3>
           <h4>{location}</h4>
         </CardStyling>
-        <PrivateRoute exact path="/matches" component={SeekerMatches} />
       </div>
     );
   } else {
@@ -84,18 +85,3 @@ function SeekerProfile(props) {
 const SeekerProfileWithRouter = withRouter(SeekerProfile);
 
 export default SeekerProfileWithRouter;
-
-{
-  /* <Route path="/" render={() => <SeekerNewUser />} />
-    <Route path="/" render={() => <SeekerCreateProfile />} />
-    <Route path="/" render={() => <SeekerProfileUpdate />} />
-    <Route path="/" render={() => <SeekerMatches />} />
-    <Route path={`/`} render={() => <SearchJobs />} /> */
-}
-{
-  /* <a href="#" onClick={LogOut()}> */
-}
-{
-  /* Log Out
-    </a> */
-}
