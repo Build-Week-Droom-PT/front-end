@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useHttp from "./Hooks/http";
+import PrivateRoute from "../private/PrivateRoute";
+import SeekerMatches from "./SeekerMatches";
 
 // import LogOut from "../Forms/LogOut";
 
@@ -14,7 +16,8 @@ import {
 } from "reactstrap";
 
 const SeekerHeader = props => {
-  console.log(props);
+  const id = props.location.pathname;
+  console.log(props.location.pathname);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -23,16 +26,17 @@ const SeekerHeader = props => {
   const { isLoadng, data, error, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/seekers/1`;
+    const url = `https://droom-pt-bw.herokuapp.com/${id}`;
 
     sendRequest(proxy + url, "SEND");
-  }, [sendRequest]);
-
+  }, [sendRequest, id]);
+  console.log(data);
   return (
     <div>
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">
-          {/* {`Welcome ${data.name || ""}`} */}
+          <div>{data ? `Welcome ${data.name}` : null}</div>
+          {/*  */}
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
@@ -41,7 +45,7 @@ const SeekerHeader = props => {
               <Link to={`/seekers/1`}>Home</Link>
             </NavItem>
             <NavItem>
-              <Link to={`/matches`}>Your Matches</Link>
+              <Link to={`/matched`}>Your Matches</Link>
             </NavItem>
             <NavItem>
               <Link to={`/search-jobs`}>Find a Job</Link>
@@ -52,6 +56,8 @@ const SeekerHeader = props => {
           </Nav>
         </Collapse>
       </Navbar>
+
+      <PrivateRoute exact path="/matched/" component={SeekerMatches} />
     </div>
   );
 };

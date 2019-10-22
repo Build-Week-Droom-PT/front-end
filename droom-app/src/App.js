@@ -21,7 +21,8 @@ import Test from "./components/seeker/test";
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <Router>
       <div>
@@ -44,7 +45,7 @@ function App() {
           path="/companies/:id"
           component={CompanyProfileWithRouter}
         />{" "}
-        <PrivateRoute exact path="/matches" component={SeekerMatches} />
+        {/* <PrivateRoute exact path="/matched/" component={SeekerMatches} /> */}
         {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
         <PrivateRoute
           exact
