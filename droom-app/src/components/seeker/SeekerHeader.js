@@ -14,7 +14,8 @@ import {
 } from "reactstrap";
 
 const SeekerHeader = props => {
-  console.log(props);
+  const id = props.location.pathname;
+  // console.log(props.location.pathname);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
@@ -23,15 +24,16 @@ const SeekerHeader = props => {
   const { isLoadng, data, error, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/seekers/1`;
+    const url = `https://droom-pt-bw.herokuapp.com${id}`;
 
     sendRequest(proxy + url, "SEND");
   }, [sendRequest]);
-
+  console.log(data);
   return (
     <div>
       <Navbar color="faded" light>
         <NavbarBrand href="/" className="mr-auto">
+          <div></div>
           {/* {`Welcome ${data.name || ""}`} */}
         </NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} className="mr-2" />
