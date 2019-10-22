@@ -47,7 +47,7 @@ const SeekerHeader = props => {
               <Link to={`/search-jobs`}>Find a Job</Link>
             </NavItem>
             <NavItem>
-              <Link to={`/profile-update`}>Update Your Profile</Link>
+              <Link to={`/new-user`}>New User</Link>
             </NavItem>
           </Nav>
         </Collapse>

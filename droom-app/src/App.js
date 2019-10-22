@@ -57,6 +57,7 @@ function App() {
           component={SeekerProfileUpdate}
         />
         <PrivateRoute exact path="/search-jobs" component={SearchJobs} />
+        <PrivateRoute exact path="/new-user" component={SeekerNewUser} />
       </div>
     </Router>
   );

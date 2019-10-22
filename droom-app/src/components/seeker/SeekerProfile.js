@@ -46,6 +46,10 @@ function SeekerProfile(props) {
   //   font-size: 2.6rem;
   // `;
 
+  const onClickHandler = e => {
+    e.preventDefault();
+  };
+
   if (data) {
     const { id, name, description, skills, location } = data;
     return (
