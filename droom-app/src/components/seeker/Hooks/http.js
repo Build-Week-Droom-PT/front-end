@@ -27,7 +27,11 @@ const useHttp = () => {
     dispatchHttp({ type: "SEND" });
     fetch(url, {
       method: type,
-      header: { "Content-type": "application/json" },
+      header: {
+        "Content-type": "application/json",
+        Authorization:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTU3MTcxMjA5NCwiZXhwIjoxNTcxNzk4NDk0fQ.XquXtHP9Sqo775a958Bq-ubr917Fazx7pSUor4TchpM"
+      },
       body: JSON.stringify()
     })
       .then(response => {

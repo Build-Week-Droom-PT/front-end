@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-// import { jobs } from "../seeker/data";
 import useHttp from "./Hooks/http";
-// import PrivateRoute from "../private/PrivateRoute";
 
 function SeekerMatches(props) {
   const CardStyling = styled.div`
@@ -24,44 +22,34 @@ function SeekerMatches(props) {
     font-size: 1.6rem;
   `;
 
-  const { isLoadng, data, error, sendRequest } = useHttp();
-
+  const { data, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/matched/seeker/1
-    `;
+    const url = `https://droom-pt-bw.herokuapp.com/matched/seeker/1`;
 
     sendRequest(proxy + url, "SEND");
-    console.log(isLoadng, data, error, sendRequest);
   }, [sendRequest]);
-  //
-  console.log(data);
-  const dataChecker = data;
-  if (dataChecker) {
-    {
-      dataChecker.map(job => {
-        console.log(job.company);
-        if (job) {
-          console.log(`you have a job`);
-          return (
-            <div>
-              <CardStyling key={Date.now()}>
-                <h3>{console.log(job.company)}</h3>
-                <h4>{console.log(job.jobtitle)}</h4>
-                <h4>${console.log(job.salary)}</h4>
-                <h4>{console.log(job.location)}</h4>
-                <h4>{console.log(job.description)}</h4>
-              </CardStyling>
-            </div>
-          );
-        }
-      });
-    }
-  } else {
-    return <h1> No Matches from if (data)</h1>;
-  }
+  //useEffect - sendRequest
 
-  return <div>what is the problem?</div>;
+  if (data) {
+    return (
+      <div>
+        {data.map(job => (
+          <div key={job.user_id}>
+            <CardStyling key={Date.now()}>
+              <h3>{job.company}</h3>
+              <h4>{job.jobtitle}</h4>
+              <h4>${job.salary}</h4>
+              <h4>{job.location}</h4>
+              <h4>{job.description}</h4>
+            </CardStyling>
+          </div>
+        ))}
+      </div>
+    );
+  } else {
+    return <span>No Matches</span>;
+  }
 }
 
 export default SeekerMatches;

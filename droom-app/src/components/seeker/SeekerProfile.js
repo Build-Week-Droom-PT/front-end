@@ -1,14 +1,6 @@
 import React, { useEffect } from "react";
-// import { Route } from "react-router-dom";
 import { withRouter } from "react-router";
-import PrivateRoute from "../private/PrivateRoute";
 import styled from "styled-components";
-import SeekerHeader from "../seeker/SeekerHeader";
-import SeekerMatches from "./SeekerMatches";
-import SearchJobs from "./SearchJobs/SearchJobs";
-import SeekerCreateProfile from "./seekerSignUp/SeekerCreateProfile";
-import SeekerProfileUpdate from "./SeekerProfileUpdate";
-import SeekerNewUser from "./seekerSignUp/SeekerNewUser";
 import useHttp from "./Hooks/http";
 
 function SeekerProfile(props) {
@@ -58,13 +50,6 @@ function SeekerProfile(props) {
     const { id, name, description, skills, location } = data;
     return (
       <div>
-        <SeekerHeader />
-        <PrivateRoute path="/" component={SeekerMatches} />
-        <PrivateRoute path="/" component={SeekerNewUser} />
-        <PrivateRoute path="/" component={SeekerCreateProfile} />
-        <PrivateRoute path="/" component={SeekerProfileUpdate} />
-        <PrivateRoute path="/" component={SearchJobs} />
-        <SearchJobs />
         <h1>I'm Your Profile</h1>
         <CardStyling key={id}>
           <h3>{name}</h3>

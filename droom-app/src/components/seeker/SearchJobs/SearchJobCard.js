@@ -13,8 +13,9 @@ function SearchJobCard() {
     const url = `https://droom-pt-bw.herokuapp.com/listings`;
 
     sendRequest(proxy + url, "SEND");
-    console.log(isLoadng, data, error, sendRequest);
+    console.warn(isLoadng, data);
   }, [sendRequest]);
+  console.log(data);
   // const CardStyling = styled.div`
   //   width: 75%;
   //   display: flex;
