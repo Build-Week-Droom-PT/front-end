@@ -26,10 +26,11 @@ function SeekerProfile(props) {
     border: 1px solid #e1e6f9;
     margin: 3% auto;
     justify-content: space-between;
-    width: 50vw;
+    align-self: flex-start;
+    width: 30vw;
     max-height: 50vh;
     max-width: 1024px;
-    margin: 35px auto;
+    // margin: 0, 60%, 0, 0;
     background: #f1f3fd;
     padding: 15px;
     box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
@@ -37,18 +38,13 @@ function SeekerProfile(props) {
     color: #383c4f;
     font-size: 1.6rem;
   `;
-
-  // const LinkStyling = styled.div`
-  //   display: flex;
-  //   justify-content: space-between;
-  //   margin: 3%;
-  //   color: #2c3a74;
-  // `;
-
-  // const FontColor = styled.div`
-  //   color: #2c3a74;
-  //   font-size: 2.6rem;
-  // `;
+  const CardCentering = styled.div`
+    border: 1px solid green;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  `;
 
   const onClickHandler = e => {
     e.preventDefault();
@@ -58,23 +54,23 @@ function SeekerProfile(props) {
     const { id, name, description, skills, location } = data;
     return (
       <div>
-        <h1>I'm Your Profile</h1>
-
         <PrivateRoute path="/" component={SeekerHeader} />
-        <CardStyling key={id}>
-          <h3>{name}</h3>
-          <h3>About Me</h3>
-          <h4>{description}</h4>
-          <h3>Skills</h3>
-          <h4>${skills}</h4>
-          <h3>Current Location</h3>
-          <h4>{location}</h4>
-        </CardStyling>
-        {/* <PrivateRoute
+        <CardCentering className="seeker-profile">
+          <CardStyling key={id}>
+            <h3>{name}</h3>
+            <h3>About Me</h3>
+            <h4>{description}</h4>
+            <h3>Skills</h3>
+            <h4>${skills}</h4>
+            <h3>Current Location</h3>
+            <h4>{location}</h4>
+          </CardStyling>
+          {/* <PrivateRoute
           exact
           path="/matched/seeker/:id"
           component={SeekerMatches}
         /> */}
+        </CardCentering>
       </div>
     );
   } else {
