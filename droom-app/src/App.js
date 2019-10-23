@@ -4,16 +4,20 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import SeekerProfileUpdateWithRouter from "./components/seeker/SeekerProfileUpdate";
 
 import LogIn from "./components/Forms/LogIn";
+import SignUp from "./components/Forms/SignUp";
+
 import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import CompanyProfileWithRouter from "./components/company/CompanyProfile";
 
 import HomePage from "./components/private/HomePage";
 import SeekerHomePage from "./components/seeker/SeekerHomePage";
 import CompanyHomePage from "./components/company/CompanyHomePage";
+
 import SeekerHeader from "./components/seeker/SeekerHeader";
 import SeekerMatches from "./components/seeker/SeekerMatches";
 import SearchJobs from "./components/seeker/SearchJobs/SearchJobs";
-import SeekerCreateProfile from "./components/seeker/seekerSignUp/SeekerCreateProfile";
+import SeekerCreateProfile from "./components/seeker/seekerSignUp/seekerCreateProfile";
+
 import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
 import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
 
@@ -22,6 +26,7 @@ import "./App.css";
 
 function App(props) {
   return (
+
     <div className="page-color">
       <Router>
         <div>
@@ -65,6 +70,9 @@ function App(props) {
         </div>
       </Router>
     </div>
+
+   
+
   );
 }
 
