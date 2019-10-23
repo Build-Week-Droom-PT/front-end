@@ -34,7 +34,18 @@ export default class SignUp extends React.Component {
             email: this.state.email,
             isCompany: this.state.isCompany,
         };
+
         console.log(newUser);
+        axios
+            .post(`https://droom-pt-bw.herokuapp.com/register`, newUser)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                console.log("account created!!")
+            } )
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render(){
@@ -63,7 +74,7 @@ export default class SignUp extends React.Component {
                     />
 
                     <label>
-                        Check if you are a company:
+                        Check if you are an employer: 
                         <input
                             type="checkbox"
                             name="isCompany"
