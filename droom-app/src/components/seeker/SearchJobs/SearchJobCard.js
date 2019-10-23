@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import useHttp from "../Hooks/http";
+import { withRouter } from "react-router";
 // import axios from "axios";
 
 function SearchJobCard(props) {
+  const pathName = props.location.pathname;
+  console.log(props.location.pathname);
   const CardStyling = styled.div`
     width: 75%;
     display: flex;
@@ -80,43 +83,45 @@ function SearchJobCard(props) {
   const { data, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/matched/seeker/1`;
-
+    const url = `https://droom-pt-bw.herokuapp.com${pathName}`;
+    const proxyUrl = proxy + url;
+    console.log(proxyUrl);
     sendRequest(proxy + url, "SEND");
-  }, [sendRequest]);
-  //useEffect - sendRequest
+  }, [sendRequest]); //useEffect - sendRequest
 
+  console.log(data);
   if (data) {
     return (
-      <div>
-        {data.map(job => (
-          <div key={job.user_id}>
-            <CardStyling key={Date.now()}>
-              <h3>{job.company}</h3>
-              <h4>{job.jobtitle}</h4>
-              <h4>${job.salary}</h4>
-              <h4>{job.location}</h4>
-              <h4>{job.description}</h4>
-              <LinkStyling>
-                <button onClick={likeClickHandler}>
-                  <FontColor>
-                    <i className="far fa-thumbs-up"></i>
-                  </FontColor>
-                </button>
-                <button onClick={passClickHandler}>
-                  <FontColor>
-                    <i className="far fa-thumbs-down"></i>
-                  </FontColor>
-                </button>
-              </LinkStyling>
-            </CardStyling>
-          </div>
-        ))}
-      </div>
+      <h1>Listings</h1>
+      // <div>
+      //   {data.map(job => (
+      //     <div key={job.user_id}>
+      //       <CardStyling key={Date.now()}>
+      //         <h3>{job.company}</h3>
+      //         <h4>{job.jobtitle}</h4>
+      //         <h4>${job.salary}</h4>
+      //         <h4>{job.location}</h4>
+      //         <h4>{job.description}</h4>
+      //         <LinkStyling>
+      //           <button onClick={likeClickHandler}>
+      //             <FontColor>
+      //               <i className="far fa-thumbs-up"></i>
+      //             </FontColor>
+      //           </button>
+      //           <button onClick={passClickHandler}>
+      //             <FontColor>
+      //               <i className="far fa-thumbs-down"></i>
+      //             </FontColor>
+      //           </button>
+      //         </LinkStyling>
+      //       </CardStyling>
+      //     </div>
+      //   ))}
+      // </div>
     );
   } else {
     return <span>No Matches</span>;
   }
 }
-
-export default SearchJobCard;
+const SearchJobCardWithRouter = withRouter(SearchJobCard);
+export default SearchJobCardWithRouter;
