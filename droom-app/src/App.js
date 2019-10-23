@@ -16,7 +16,6 @@ import SearchJobs from "./components/seeker/SearchJobs/SearchJobs";
 import SeekerCreateProfile from "./components/seeker/seekerSignUp/SeekerCreateProfile";
 import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
 import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
-import Test from "./components/seeker/test";
 
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
@@ -32,8 +31,8 @@ function App(props) {
           exact
           path="/companyhomepage"
           component={CompanyHomePage}
-        />
-        <PrivateRoute path="/" component={SeekerHeader} />
+        // />
+        // <PrivateRoute path="/" component={SeekerHeader} />
         <PrivateRoute
           exact
           path="/seekers/:id"
