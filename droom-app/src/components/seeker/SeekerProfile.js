@@ -4,6 +4,8 @@ import styled from "styled-components";
 import useHttp from "./Hooks/http";
 import SeekerMatches from "./SeekerMatches";
 import PrivateRoute from "../private/PrivateRoute";
+import SeekerHomePage from "../seeker/SeekerHomePage";
+import SeekerHeader from "../seeker/SeekerHomePage";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
@@ -57,6 +59,8 @@ function SeekerProfile(props) {
     return (
       <div>
         <h1>I'm Your Profile</h1>
+
+        <PrivateRoute path="/" component={SeekerHeader} />
         <CardStyling key={id}>
           <h3>{name}</h3>
           <h3>About Me</h3>
