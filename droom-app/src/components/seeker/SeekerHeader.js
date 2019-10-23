@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import useHttp from "./Hooks/http";
 import PrivateRoute from "../private/PrivateRoute";
 import SeekerMatches from "./SeekerMatches";
 import LogOut from "../Forms/LogOut";
 import styled from "styled-components";
+
 import {
   Collapse,
   Navbar,
@@ -55,12 +56,13 @@ const SeekerHeader = props => {
   `;
 
   if (data) {
+    console.log(data);
     return (
       <div className="header-container">
         <div className="nav-styling">
           <div className="nav-container">
             <h1 className="header-message">
-              {data ? `Welcome ${data.name}` : null}
+              {data.name ? `Welcome ${data.name}` : ""}
             </h1>
             <div className="button-container">
               <button className="profile-button">
@@ -94,4 +96,4 @@ const SeekerHeader = props => {
   }
 };
 
-export default SeekerHeader;
+export default withRouter(SeekerHeader);
