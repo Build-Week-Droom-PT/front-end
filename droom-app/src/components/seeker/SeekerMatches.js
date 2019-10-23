@@ -37,7 +37,7 @@ function SeekerMatches(props) {
 
   if (data) {
     return (
-      <div>
+      <div className="seeker-profile">
         {data.map(job => (
           <div key={job.user_id}>
             <CardStyling key={Date.now()}>
