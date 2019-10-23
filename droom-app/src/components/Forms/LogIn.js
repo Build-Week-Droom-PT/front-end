@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
@@ -61,6 +62,7 @@ const LogIn = () => {
         />
         <button className="button">Log In</button>
       </form>
+      <button className="button"><Link to="/signup">Sign Up</Link></button>
     </div>
   );
 };
