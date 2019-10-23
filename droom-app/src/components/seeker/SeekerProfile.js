@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import styled from "styled-components";
 import useHttp from "./Hooks/http";
+import SeekerMatches from "./SeekerMatches";
+import PrivateRoute from "../private/PrivateRoute";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
@@ -64,6 +66,11 @@ function SeekerProfile(props) {
           <h3>Current Location</h3>
           <h4>{location}</h4>
         </CardStyling>
+        {/* <PrivateRoute
+          exact
+          path="/matched/seeker/:id"
+          component={SeekerMatches}
+        /> */}
       </div>
     );
   } else {

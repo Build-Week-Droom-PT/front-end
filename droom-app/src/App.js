@@ -22,7 +22,6 @@ import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
 
 function App(props) {
-  console.log(props);
   return (
     <Router>
       <div>
@@ -45,7 +44,11 @@ function App(props) {
           path="/companies/:id"
           component={CompanyProfileWithRouter}
         />{" "}
-        {/* <PrivateRoute exact path="/matched/" component={SeekerMatches} /> */}
+        <PrivateRoute
+          exact
+          path="/matched/seeker/:id"
+          component={SeekerMatches}
+        />
         {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
         <PrivateRoute
           exact
@@ -57,8 +60,8 @@ function App(props) {
           path="/profile-update/:user_id"
           component={SeekerProfileUpdate}
         />
-        <PrivateRoute exact path="/search-jobs" component={SearchJobs} />
-        <PrivateRoute exact path="/new-user" component={SeekerNewUser} />
+        <PrivateRoute exact path="/listings" component={SearchJobs} />
+        <PrivateRoute exact path="/register" component={SeekerNewUser} />
       </div>
     </Router>
   );

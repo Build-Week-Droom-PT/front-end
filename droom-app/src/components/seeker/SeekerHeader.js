@@ -31,35 +31,69 @@ const SeekerHeader = props => {
     sendRequest(proxy + url, "SEND");
   }, [sendRequest, id]);
   console.log(data);
-  return (
-    <div>
-      <Navbar color="faded" light>
-        <NavbarBrand href="/" className="mr-auto">
-          <div>{data ? `Welcome ${data.name}` : null}</div>
-          {/*  */}
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
-            <NavItem>
-              <Link to={`/seekers/1`}>Home</Link>
-            </NavItem>
-            <NavItem>
-              <Link to={`/matched`}>Your Matches</Link>
-            </NavItem>
-            <NavItem>
-              <Link to={`/search-jobs`}>Find a Job</Link>
-            </NavItem>
-            <NavItem>
-              <Link to={`/new-user`}>New User</Link>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
+  // return (
+  //   <div>
+  //     <Navbar color="faded" light>
+  //       <NavbarBrand href="/" className="mr-auto">
+  //         <div>{data ? `Welcome ${data.name}` : null}</div>
+  //         {/*  */}
+  //       </NavbarBrand>
+  //       <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+  //       <Collapse isOpen={!collapsed} navbar>
+  //         <Nav navbar>
+  //           <NavItem>
+  //             <Link to={`/seekers/1`}>Home</Link>
+  //           </NavItem>
+  //           <NavItem>
+  //             <Link to={`/matched`}>Your Matches</Link>
+  //           </NavItem>
+  //           <NavItem>
+  //             <Link to={`/search-jobs`}>Find a Job</Link>
+  //           </NavItem>
+  //           <NavItem>
+  //             <Link to={`/new-user`}>New User</Link>
+  //           </NavItem>
+  //         </Nav>
+  //       </Collapse>
+  //     </Navbar>
 
-      <PrivateRoute exact path="/matched/" component={SeekerMatches} />
-    </div>
-  );
+  //     <PrivateRoute exact path="/matched/" component={SeekerMatches} />
+  //   </div>
+  // );
+
+  if (data) {
+    return (
+      <div>
+        <Navbar color="faded" light>
+          <NavbarBrand href="/" className="mr-auto">
+            <div>{data ? `Welcome ${data.name}` : null}</div>
+            {/*  */}
+          </NavbarBrand>
+          <NavbarToggler onClick={toggleNavbar} className="mr-2" />
+          <Collapse isOpen={!collapsed} navbar>
+            <Nav navbar>
+              <NavItem>
+                <Link to={`/seekers/${data.id}`}>Home</Link>
+              </NavItem>
+              <NavItem>
+                <Link to={`/matched/seeker/${data.id}`}>Your Matches</Link>
+              </NavItem>
+              <NavItem>
+                <Link to={`/listings`}>Find a Job</Link>
+              </NavItem>
+              <NavItem>
+                <Link to={`/register`}>New User</Link>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+
+        <PrivateRoute exact path="/matched/" component={SeekerMatches} />
+      </div>
+    );
+  } else {
+    return <span>No Header</span>;
+  }
 };
 
 export default SeekerHeader;

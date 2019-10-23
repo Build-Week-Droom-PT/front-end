@@ -3,7 +3,8 @@ import styled from "styled-components";
 import useHttp from "./Hooks/http";
 
 function SeekerMatches(props) {
-  console.log(props);
+  console.log(props.location.pathname);
+  const pathID = props.location.pathname;
   const CardStyling = styled.div`
     width: 75%;
     display: flex;
@@ -28,7 +29,7 @@ function SeekerMatches(props) {
   const { data, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com/matched/seeker/1`;
+    const url = `https://droom-pt-bw.herokuapp.com${pathID}`;
 
     sendRequest(proxy + url, "SEND");
   }, [sendRequest]);
