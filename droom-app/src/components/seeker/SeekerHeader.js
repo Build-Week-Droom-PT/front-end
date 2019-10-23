@@ -31,16 +31,9 @@ const SeekerHeader = props => {
   }, [sendRequest, id]);
   console.log(data);
 
-  const HeaderStyling = styled.h1`
+  const HeaderStyling = styled.div`
     border: 1px solid white;
     display: flex;
-  `;
-
-  const HeaderMessageStyling = styled.h1`
-    border: 1px solid white;
-    font-size: 1.6em;
-    color: #383c4f;
-    padding-bottom: 2%;
   `;
 
   const NavStyling = styled.div`
@@ -52,24 +45,24 @@ const SeekerHeader = props => {
     width: 100%;
   `;
 
-  const ButtonContainer = styled.h1`
+  const ButtonContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
   `;
-  const HeaderContainer = styled.h1`
+  const HeaderContainer = styled.div`
     // display: flex;
     // justify-content: space-evenly;
   `;
 
   if (data) {
     return (
-      <HeaderStyling>
-        <NavStyling>
-          <HeaderContainer>
-            <HeaderMessageStyling>
+      <div className="header-container">
+        <div className="nav-styling">
+          <div className="nav-container">
+            <h1 className="header-message">
               {data ? `Welcome ${data.name}` : null}
-            </HeaderMessageStyling>
-            <ButtonContainer>
+            </h1>
+            <div className="button-container">
               <button className="profile-button">
                 <Link className="link" to={`/seekers/${data.id}`}>
                   Home
@@ -90,11 +83,11 @@ const SeekerHeader = props => {
                   Log Out
                 </Link>
               </button>
-            </ButtonContainer>
-          </HeaderContainer>
-        </NavStyling>
+            </div>
+          </div>
+        </div>
         <PrivateRoute exact path="/matched/" component={SeekerMatches} />
-      </HeaderStyling>
+      </div>
     );
   } else {
     return <span>No Header</span>;
