@@ -24,6 +24,7 @@ function App(props) {
   return (
     <div className="page-color">
       <Router>
+        <SeekerHeader />
         <div>
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/" component={HomePage} />
@@ -33,7 +34,6 @@ function App(props) {
             path="/companyhomepage"
             component={CompanyHomePage}
           />
-          {/* <PrivateRoute path="/" component={SeekerHeader} /> */}
           <PrivateRoute
             exact
             path="/seekers/:id"

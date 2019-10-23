@@ -54,7 +54,7 @@ function SeekerProfile(props) {
     const { id, name, description, skills, location } = data;
     return (
       <div>
-        <PrivateRoute path="/" component={SeekerHeader} />
+        {/* <PrivateRoute path="/seekers/:id/" component={SeekerHeader} /> */}
         <CardCentering className="seeker-profile">
           <CardStyling key={id}>
             <h3>{name}</h3>
