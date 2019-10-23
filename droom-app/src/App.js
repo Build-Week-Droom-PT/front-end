@@ -26,49 +26,53 @@ import "./App.css";
 
 function App(props) {
   return (
-    <Router>
-      <div>
-        <Route exact path="/login" component={LogIn} />
-        <Route exact path="/" component={HomePage} />
-        <Route path="/signup" component={SignUp} />
 
-        {/* <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} /> */}
-        <PrivateRoute
-          exact
-          path="/companyhomepage"
-          component={CompanyHomePage}
-         />
-         {/* <PrivateRoute path="/" component={SeekerHeader} /> */}
-        <PrivateRoute
-          exact
-          path="/seekers/:id"
-          component={SeekerProfileWithRouter}
-        />
-        <PrivateRoute
-          exact
-          path="/companies/:id"
-          component={CompanyProfileWithRouter}
-        />{" "}
-        <PrivateRoute
-          exact
-          path="/matched/seeker/:id"
-          component={SeekerMatches}
-        />
-        {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
-        <PrivateRoute
-          exact
-          path="/create-profile"
-          component={SeekerCreateProfile}
-        />
-        <PrivateRoute
-          exact
-          path="/profile-update/:user_id"
-          component={SeekerProfileUpdate}
-        />
-        <PrivateRoute exact path="/listings" component={SearchJobs} />
-        <PrivateRoute exact path="/register" component={SeekerNewUser} />
-      </div>
-    </Router>
+    <div className="page-color">
+      <Router>
+        <div>
+          <Route exact path="/login" component={LogIn} />
+          <Route exact path="/" component={HomePage} />
+          {/* <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} /> */}
+          <PrivateRoute
+            exact
+            path="/companyhomepage"
+            component={CompanyHomePage}
+          />
+          {/* <PrivateRoute path="/" component={SeekerHeader} /> */}
+          <PrivateRoute
+            exact
+            path="/seekers/:id"
+            component={SeekerProfileWithRouter}
+          />
+          <PrivateRoute
+            exact
+            path="/companies/:id"
+            component={CompanyProfileWithRouter}
+          />{" "}
+          <PrivateRoute
+            exact
+            path="/matched/seeker/:id"
+            component={SeekerMatches}
+          />
+          {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
+          <PrivateRoute
+            exact
+            path="/create-profile"
+            component={SeekerCreateProfile}
+          />
+          <PrivateRoute
+            exact
+            path="/profile-update/:user_id"
+            component={SeekerProfileUpdate}
+          />
+          <PrivateRoute exact path="/listings" component={SearchJobs} />
+          <PrivateRoute exact path="/register" component={SeekerNewUser} />
+        </div>
+      </Router>
+    </div>
+
+   
+
   );
 }
 

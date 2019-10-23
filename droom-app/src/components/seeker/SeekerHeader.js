@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import useHttp from "./Hooks/http";
 import PrivateRoute from "../private/PrivateRoute";
 import SeekerMatches from "./SeekerMatches";
-
-// import LogOut from "../Forms/LogOut";
-
+import LogOut from "../Forms/LogOut";
+import styled from "styled-components";
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem
+  NavItem,
+  Button
 } from "reactstrap";
 
 const SeekerHeader = props => {
@@ -21,8 +21,7 @@ const SeekerHeader = props => {
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNavbar = () => setCollapsed(!collapsed);
-  // const user = Number(props.match.params.id);
-  // console.log(user);
+
   const { isLoadng, data, error, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -31,63 +30,62 @@ const SeekerHeader = props => {
     sendRequest(proxy + url, "SEND");
   }, [sendRequest, id]);
   console.log(data);
-  // return (
-  //   <div>
-  //     <Navbar color="faded" light>
-  //       <NavbarBrand href="/" className="mr-auto">
-  //         <div>{data ? `Welcome ${data.name}` : null}</div>
-  //         {/*  */}
-  //       </NavbarBrand>
-  //       <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-  //       <Collapse isOpen={!collapsed} navbar>
-  //         <Nav navbar>
-  //           <NavItem>
-  //             <Link to={`/seekers/1`}>Home</Link>
-  //           </NavItem>
-  //           <NavItem>
-  //             <Link to={`/matched`}>Your Matches</Link>
-  //           </NavItem>
-  //           <NavItem>
-  //             <Link to={`/search-jobs`}>Find a Job</Link>
-  //           </NavItem>
-  //           <NavItem>
-  //             <Link to={`/new-user`}>New User</Link>
-  //           </NavItem>
-  //         </Nav>
-  //       </Collapse>
-  //     </Navbar>
 
-  //     <PrivateRoute exact path="/matched/" component={SeekerMatches} />
-  //   </div>
-  // );
+  const HeaderStyling = styled.div`
+    border: 1px solid white;
+    display: flex;
+  `;
+
+  const NavStyling = styled.div`
+    border: 1px solid red;
+    display: flex;
+    flex-flow: column rap;
+    padding: 2em;
+    height: 20vh;
+    width: 100%;
+  `;
+
+  const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+  `;
+  const HeaderContainer = styled.div`
+    // display: flex;
+    // justify-content: space-evenly;
+  `;
 
   if (data) {
     return (
-      <div>
-        <Navbar color="faded" light>
-          <NavbarBrand href="/" className="mr-auto">
-            <div>{data ? `Welcome ${data.name}` : null}</div>
-            {/*  */}
-          </NavbarBrand>
-          <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <Link to={`/seekers/${data.id}`}>Home</Link>
-              </NavItem>
-              <NavItem>
-                <Link to={`/matched/seeker/${data.id}`}>Your Matches</Link>
-              </NavItem>
-              <NavItem>
-                <Link to={`/listings`}>Find a Job</Link>
-              </NavItem>
-              <NavItem>
-                <Link to={`/register`}>New User</Link>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
-
+      <div className="header-container">
+        <div className="nav-styling">
+          <div className="nav-container">
+            <h1 className="header-message">
+              {data ? `Welcome ${data.name}` : null}
+            </h1>
+            <div className="button-container">
+              <button className="profile-button">
+                <Link className="link" to={`/seekers/${data.id}`}>
+                  Home
+                </Link>
+              </button>
+              <button className="profile-button">
+                <Link className="link" to={`/matched/seeker/${data.id}`}>
+                  Matches
+                </Link>
+              </button>
+              <button className="profile-button">
+                <Link className="link" to={`/listings`}>
+                  Jobs
+                </Link>
+              </button>
+              <button className="profile-button">
+                <Link className="link" to={<LogOut />}>
+                  Log Out
+                </Link>
+              </button>
+            </div>
+          </div>
+        </div>
         <PrivateRoute exact path="/matched/" component={SeekerMatches} />
       </div>
     );
