@@ -21,6 +21,7 @@ const useHttp = () => {
     error: null,
     data: null,
     userData: null
+    // seekerID: null
   });
 
   const sendRequest = useCallback((url, { type }) => {
@@ -52,6 +53,7 @@ const useHttp = () => {
     data: httpState.data,
     error: httpState.error,
     sendRequest: sendRequest
+    // seekerID: httpState.data.id
   }; //return statement
 }; //useHttp
 

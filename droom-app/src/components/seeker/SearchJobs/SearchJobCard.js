@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import useHttp from "../Hooks/http";
+// import useHttp from "../Hooks/http";
 import { withRouter } from "react-router";
+import { jobs } from "../data";
 // import axios from "axios";
 
 function SearchJobCard(props) {
@@ -80,44 +81,44 @@ function SearchJobCard(props) {
     console.log(`No thanks for this job!`);
   }
 
-  const { data, sendRequest } = useHttp();
-  useEffect(() => {
-    const proxy = "https://cors-anywhere.herokuapp.com/";
-    const url = `https://droom-pt-bw.herokuapp.com${pathName}`;
-    const proxyUrl = proxy + url;
-    console.log(proxyUrl);
-    sendRequest(proxy + url, "SEND");
-  }, [sendRequest]); //useEffect - sendRequest
+  // const { data, sendRequest } = useHttp();
+  // useEffect(() => {
+  //   const proxy = "https://cors-anywhere.herokuapp.com/";
+  //   const url = `https://droom-pt-bw.herokuapp.com${pathName}`;
+  //   const proxyUrl = proxy + url;
+  //   console.log(proxyUrl);
+  //   sendRequest(proxy + url, "SEND");
+  // }, [sendRequest]); //useEffect - sendRequest
 
-  console.log(data);
-  if (data) {
+  console.log(jobs);
+  if (jobs) {
     return (
-      <h1>Listings</h1>
-      // <div>
-      //   {data.map(job => (
-      //     <div key={job.user_id}>
-      //       <CardStyling key={Date.now()}>
-      //         <h3>{job.company}</h3>
-      //         <h4>{job.jobtitle}</h4>
-      //         <h4>${job.salary}</h4>
-      //         <h4>{job.location}</h4>
-      //         <h4>{job.description}</h4>
-      //         <LinkStyling>
-      //           <button onClick={likeClickHandler}>
-      //             <FontColor>
-      //               <i className="far fa-thumbs-up"></i>
-      //             </FontColor>
-      //           </button>
-      //           <button onClick={passClickHandler}>
-      //             <FontColor>
-      //               <i className="far fa-thumbs-down"></i>
-      //             </FontColor>
-      //           </button>
-      //         </LinkStyling>
-      //       </CardStyling>
-      //     </div>
-      //   ))}
-      // </div>
+      // <h1>Listings</h1>
+      <div>
+        {jobs.map(job => (
+          <div key={job.user_id}>
+            <CardStyling key={Date.now()}>
+              <h3>{job.company}</h3>
+              <h4>{job.jobtitle}</h4>
+              <h4>${job.salary}</h4>
+              <h4>{job.location}</h4>
+              <h4>{job.description}</h4>
+              <LinkStyling>
+                <button onClick={likeClickHandler}>
+                  <FontColor>
+                    <i className="far fa-thumbs-up"></i>
+                  </FontColor>
+                </button>
+                <button onClick={passClickHandler}>
+                  <FontColor>
+                    <i className="far fa-thumbs-down"></i>
+                  </FontColor>
+                </button>
+              </LinkStyling>
+            </CardStyling>
+          </div>
+        ))}
+      </div>
     );
   } else {
     return <span>No Matches</span>;

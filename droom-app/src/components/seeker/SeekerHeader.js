@@ -16,9 +16,9 @@ const SeekerHeader = props => {
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://droom-pt-bw.herokuapp.com/${id}`;
-
+    // const userID = data.id;
     sendRequest(proxy + url, "SEND");
-  }, [sendRequest, id]);
+  }, [sendRequest]);
   console.log(id);
 
   if (data) {

@@ -27,11 +27,10 @@ function App(props) {
   return (
     <div>
       <Router className="page-color">
-        <PrivateRoute path="/" component={SeekerHeader} />
-        {/* <SeekerHeader /> */}
+        {/* <PrivateRoute path="/" component={SeekerHeader} /> */}
+        <SeekerHeader />
         {/* <div className="errors"> */}
         <Route exact path="/" component={LogIn} />
-        {/* <Route exact path="/" component={HomePage} /> */}
         <PrivateRoute
           exact
           path="/companyhomepage"
@@ -63,7 +62,7 @@ function App(props) {
           path="/profile-update/:user_id"
           component={SeekerProfileUpdate}
         />
-        <PrivateRoute exact path="/matched/seeker/:id" component={SearchJobs} />
+        {/* <PrivateRoute exact path="/matched/seeker/:id" component={SearchJobs} /> */}
         <PrivateRoute exact path="/register" component={SeekerNewUser} />
         {/* </div> */}
       </Router>

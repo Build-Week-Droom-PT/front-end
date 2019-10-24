@@ -1,5 +1,3 @@
-// Data from https://www.uncommongoods.com/fun/by-interest/geek-gifts
-
 export const jobs = [
   {
     id: 1,
