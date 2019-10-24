@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import { Button } from "semantic-ui-react";
+// import { Button } from "semantic-ui-react";
 
 class LogOut extends Component {
     state = {
@@ -19,7 +19,7 @@ class LogOut extends Component {
             return <Redirect to ="/" push={true} />
         }
 
-        return <Button onClick={this.logout}>Log Out</Button>
+        return <button className="profile-button link" onClick={this.logout}>Log Out</button>
     }
 }
 

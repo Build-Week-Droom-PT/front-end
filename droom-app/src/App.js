@@ -33,6 +33,7 @@ function App(props) {
         <div>
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/" component={HomePage} />
+          <Route path="/signup" component={SignUp}/>
           {/* <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} /> */}
           <PrivateRoute
             exact
