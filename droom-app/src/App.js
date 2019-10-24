@@ -10,13 +10,11 @@ import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import CompanyProfileWithRouter from "./components/company/CompanyProfile";
 
 import HomePage from "./components/private/HomePage";
-import SeekerHomePage from "./components/seeker/SeekerHomePage";
 import CompanyHomePage from "./components/company/CompanyHomePage";
 
 import SeekerHeader from "./components/seeker/SeekerHeader";
 import SeekerMatches from "./components/seeker/SeekerMatches";
 import SearchJobs from "./components/seeker/SearchJobs/SearchJobs";
-import SeekerCreateProfile from "./components/seeker/seekerSignUp/seekerCreateProfile";
 
 import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
 import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
@@ -25,54 +23,51 @@ import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
 
 function App(props) {
+  console.log(props);
   return (
-
-    <div className="page-color">
-      <Router>
-        <SeekerHeader />
-        <div>
-          <Route exact path="/login" component={LogIn} />
-          <Route exact path="/" component={HomePage} />
-          {/* <PrivateRoute exact path="/seekerhomepage" component={SeekerHomePage} /> */}
-          <PrivateRoute
-            exact
-            path="/companyhomepage"
-            component={CompanyHomePage}
-          />
-          <PrivateRoute
-            exact
-            path="/seekers/:id"
-            component={SeekerProfileWithRouter}
-          />
-          <PrivateRoute
-            exact
-            path="/companies/:id"
-            component={CompanyProfileWithRouter}
-          />{" "}
-          <PrivateRoute
-            exact
-            path="/matched/seeker/:id"
-            component={SeekerMatches}
-          />
-          {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
-          <PrivateRoute
+    <div>
+      <Router className="page-color">
+        <PrivateRoute path="/" component={SeekerHeader} />
+        {/* <SeekerHeader /> */}
+        {/* <div className="errors"> */}
+        <Route exact path="/" component={LogIn} />
+        {/* <Route exact path="/" component={HomePage} /> */}
+        <PrivateRoute
+          exact
+          path="/companyhomepage"
+          component={CompanyHomePage}
+        />
+        <PrivateRoute
+          exact
+          path="/seekers/:id"
+          component={SeekerProfileWithRouter}
+        />
+        <PrivateRoute
+          exact
+          path="/companies/:id"
+          component={CompanyProfileWithRouter}
+        />{" "}
+        <PrivateRoute
+          exact
+          path="/matched/seeker/:id"
+          component={SeekerMatches}
+        />
+        {/* <PrivateRoute path="/" component={SeekerNewUser} /> */}
+        {/* <PrivateRoute
             exact
             path="/create-profile"
             component={SeekerCreateProfile}
-          />
-          <PrivateRoute
-            exact
-            path="/profile-update/:user_id"
-            component={SeekerProfileUpdate}
-          />
-          <PrivateRoute exact path="/listings" component={SearchJobs} />
-          <PrivateRoute exact path="/register" component={SeekerNewUser} />
-        </div>
+          /> */}
+        <PrivateRoute
+          exact
+          path="/profile-update/:user_id"
+          component={SeekerProfileUpdate}
+        />
+        <PrivateRoute exact path="/matched/seeker/:id" component={SearchJobs} />
+        <PrivateRoute exact path="/register" component={SeekerNewUser} />
+        {/* </div> */}
       </Router>
     </div>
-
-   
-
   );
 }
 

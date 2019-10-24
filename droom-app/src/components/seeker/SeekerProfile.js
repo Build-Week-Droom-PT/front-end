@@ -28,7 +28,7 @@ function SeekerProfile(props) {
     justify-content: space-between;
     align-self: flex-start;
     width: 30vw;
-    max-height: 50vh;
+    min-height: 50vh;
     max-width: 1024px;
     // margin: 0, 60%, 0, 0;
     background: #f1f3fd;
