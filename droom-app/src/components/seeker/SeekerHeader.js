@@ -47,11 +47,7 @@ const SeekerHeader = props => {
                   Jobs
                 </Link>
               </button>
-              <button className="profile-button">
-                <Link className="link" to={<LogOut />}>
-                  Log Out
-                </Link>
-              </button>
+              <LogOut/>
             </div>
           </div>
         </div>
