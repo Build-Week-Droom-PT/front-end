@@ -50,11 +50,6 @@ const LogIn = () => {
     setShowLogin(false);
   };
 
-  const loginClickHandler = e => {
-    // e.prevent.default();
-    setShowLogin(false);
-  };
-
   return (
     <div>
       {showLogin && (

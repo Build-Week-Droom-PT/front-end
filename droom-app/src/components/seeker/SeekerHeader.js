@@ -14,7 +14,6 @@ const SeekerHeader = props => {
     const url = `https://droom-pt-bw.herokuapp.com/${id}`;
     sendRequest(proxy + url, "SEND");
   }, [sendRequest]);
-  console.log(id);
 
   if (data) {
     console.log(data.id);

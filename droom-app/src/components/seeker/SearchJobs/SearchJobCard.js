@@ -54,7 +54,7 @@ function SearchJobCard() {
     return (
       <div>
         {jobs.map(job => (
-          <div key={job.user_id}>
+          <div key={job.id}>
             <CardStyling key={Date.now()}>
               <h3>{job.company}</h3>
               <h4>{job.jobtitle}</h4>
