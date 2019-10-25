@@ -5,7 +5,7 @@ import PrivateRoute from "../private/PrivateRoute";
 export default function SeekerHomePage() {
   return (
     <div>
-      <PrivateRoute path="/" component={SeekerHeader} />
+      {/* <PrivateRoute path="/" component={SeekerHeader} /> */}
     </div>
   );
 }
