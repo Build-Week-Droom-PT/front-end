@@ -2,6 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import {axiosWithAuth} from "../../utils/axiosWithAuth";
 
 const SeekerProfileUpdate = ({
   errors,
@@ -133,11 +134,10 @@ export default withFormik({
       setErrors({ verifyPassword: "Passwords do not match" });
       setSubmitting(false);
     } else {
-      axios
-
-        .put("https://droom-pt-bw.herokuapp.com/seekers", values)
+      axiosWithAuth()
+        .put("/seekers", values)
         .then(res => {
-          // console.log(res);
+          console.log(res);
           resetForm();
           setSubmitting(false);
         })
@@ -148,3 +148,60 @@ export default withFormik({
     }
   }
 })(SeekerProfileUpdate);
+
+// import React, { useState, useEffect } from "react";
+// import { axiosWithAuth } from "../../utils/axiosWithAuth";
+
+// const initialState = {
+//   name: "",
+//   location: "",
+//   skills: "",
+//   description: "",
+// }
+
+// const SeekerProfileUpdate = props => {
+//   const [updateData, setUpdateData] = useState(initialState);
+
+//   useEffect(() => {
+//     const userToEdit = props.users.find(
+//       user => `${user.id}` === props.match.params.id
+//     );
+
+//     if (userToEdit) setUpdateData(userToEdit);
+//   }, [props.users, props.match.params.id]);
+
+//   const changeHandler = ev => {
+//     ev.persist();
+//     setUpdateData({
+//       ...updateData,
+//       [ev.target.name]: ev.target.value
+//     })
+//   }
+
+//   const handleSubmit = e => {
+//     e.preventDefault();
+//     axiosWithAuth()
+//       .put(`/seekers/${updateData.id}`, updateData)
+//       .then(res => {
+//         console.log(res.data)
+//         props.setUpdateData(res.data)
+//         props.history.push(`/seekers/${updateData.id}`)
+//       })
+//       .catch( err => {
+//         console.log(err)
+//       })
+//   }
+
+
+
+//   return(
+//     <div>
+//       <form>
+
+//         <button>Submit Update</button>
+//       </form>
+//     </div>
+//   )
+// }
+
+// export default SeekerProfileUpdate;

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import { Switch } from "react-router-dom";
-import SeekerProfileUpdateWithRouter from "./components/seeker/SeekerProfileUpdate";
+// import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
 
 import LogIn from "./components/Forms/LogIn";
 import SignUp from "./components/Forms/SignUp";
