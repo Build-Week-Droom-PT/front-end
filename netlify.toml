@@ -1,6 +1,6 @@
 [build]
  base = "./droom-app"
- publish = "./
+ publish = "./"
  command = "npm build"
   [[redirects]]
   from = "/*"
