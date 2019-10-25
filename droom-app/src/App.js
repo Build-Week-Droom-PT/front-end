@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
 
-import LogIn from "./components/Forms/LogIn";
-import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
-import SeekerHeader from "./components/seeker/SeekerHeader/SeekerHeader";
+import LogIn from "./components/Forms/LogForms/LogIn";
+import SeekerNewUser from "./components/Forms/seekerSignUp/SeekerNewUser";
+import SeekerHeader from "./components/Header/Header";
 import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
-import SeekerMatches from "./components/seeker/SeekerMatches";
-import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
+import SeekerMatches from "./components/Match/SeekerMatches";
+// import SeekerProfileUpdate from "./components/Forms/SeekerProfileUpdate";
 
 function App() {
   return (
@@ -27,11 +27,11 @@ function App() {
           component={SeekerMatches}
         />
         <PrivateRoute path="/sign-up" component={SeekerNewUser} />
-        <PrivateRoute
+        {/* <PrivateRoute
           exact
           path="/profile-update/:user_id"
           component={SeekerProfileUpdate}
-        />
+        /> */}
       </Router>
     </div>
   );

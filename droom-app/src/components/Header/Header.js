@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import useHttp from "../Hooks/http";
-import PrivateRoute from "../../private/PrivateRoute";
-import SeekerMatches from "../SeekerMatches";
-import LogOut from "../../Forms/LogOut";
+import useHttp from "../../Hooks/http";
+import PrivateRoute from "../private/PrivateRoute";
+import SeekerMatches from "../Match/SeekerMatches";
+import LogOut from "../Forms/LogForms/LogOut";
 
 const SeekerHeader = props => {
   const id = props.location.pathname;

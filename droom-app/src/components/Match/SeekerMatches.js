@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import useHttp from "./Hooks/http";
+import useHttp from "../../Hooks/http";
 
 function SeekerMatches(props) {
-  console.log(props.location.pathname);
   const pathID = props.location.pathname;
   const CardStyling = styled.div`
     border-radius: 12px;

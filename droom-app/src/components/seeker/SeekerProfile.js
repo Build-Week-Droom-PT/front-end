@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import styled from "styled-components";
-import useHttp from "./Hooks/http";
+import useHttp from "../../Hooks/http";
 
-import SearchJobCard from "./SearchJobs/SearchJobCard";
+import SearchJobCard from "../SearchJobs/SearchJobCard";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
@@ -13,7 +13,6 @@ function SeekerProfile(props) {
     const url = `https://droom-pt-bw.herokuapp.com/seekers/${user}`;
 
     sendRequest(proxy + url, "SEND");
-    console.log(isLoadng, data, error, sendRequest);
   }, [sendRequest]);
 
   const CardStyling = styled.div`

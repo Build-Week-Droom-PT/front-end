@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import SeekerNewUser from "../seeker/seekerSignUp/SeekerNewUser";
+import SeekerNewUser from "../seekerSignUp/SeekerNewUser";
 
-import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../../utils/axiosWithAuth";
 
 const initialState = {
   username: "",
@@ -44,6 +44,7 @@ const LogIn = () => {
   const signUpClickHandler = () => {
     setShowSignUp(true);
     setShowLogin(false);
+    return;
   };
 
   return (

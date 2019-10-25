@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -91,10 +92,13 @@ export default withFormik({
         console.log(res);
         resetForm();
         setSubmitting(false);
+        //hacky way to force reload so that
+        window.history.back();
       })
       .catch(err => {
         console.log(err);
+        setErrors(err);
         setSubmitting(false);
       });
   }
-})(SeekerCreateProfile);
+})(withRouter(SeekerCreateProfile));
