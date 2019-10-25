@@ -3,14 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SeekerCreateProfile = ({
-  errors,
-  touched,
-  isSubmitting,
-  isValidating,
-  values
-}) => {
-  //   console.log(props);
+const SeekerCreateProfile = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <h1>Create a Profile</h1>
@@ -93,7 +86,6 @@ export default withFormik({
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://droom-pt-bw.herokuapp.com/seekers`;
     axios
-      // https://droom-pt-bw.herokuapp.com/seekers
       .post(proxy + url, values)
       .then(res => {
         console.log(res);

@@ -1,15 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LogIn from "./components/Forms/LogIn";
-import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
-import CompanyProfileWithRouter from "./components/company/CompanyProfile";
-import CompanyHomePage from "./components/company/CompanyHomePage";
-import SeekerHeader from "./components/seeker/SeekerHeader";
-import SeekerMatches from "./components/seeker/SeekerMatches";
-import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
-import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
 import PrivateRoute from "./components/private/PrivateRoute";
 import "./App.css";
+
+import LogIn from "./components/Forms/LogIn";
+import SeekerNewUser from "./components/seeker/seekerSignUp/SeekerNewUser";
+import SeekerHeader from "./components/seeker/SeekerHeader/SeekerHeader";
+import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
+import SeekerMatches from "./components/seeker/SeekerMatches";
+import SeekerProfileUpdate from "./components/seeker/SeekerProfileUpdate";
 
 function App() {
   return (
@@ -19,19 +18,9 @@ function App() {
         <Route exact path="/" component={LogIn} />
         <PrivateRoute
           exact
-          path="/companyhomepage"
-          component={CompanyHomePage}
-        />
-        <PrivateRoute
-          exact
           path="/seekers/:id"
           component={SeekerProfileWithRouter}
         />
-        <PrivateRoute
-          exact
-          path="/companies/:id"
-          component={CompanyProfileWithRouter}
-        />{" "}
         <PrivateRoute
           exact
           path="/matched/seeker/:id"

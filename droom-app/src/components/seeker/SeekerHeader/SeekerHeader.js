@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import useHttp from "./Hooks/http";
-import PrivateRoute from "../private/PrivateRoute";
-import SeekerMatches from "./SeekerMatches";
-import LogOut from "../Forms/LogOut";
+import useHttp from "../Hooks/http";
+import PrivateRoute from "../../private/PrivateRoute";
+import SeekerMatches from "../SeekerMatches";
+import LogOut from "../../Forms/LogOut";
 
 const SeekerHeader = props => {
   const id = props.location.pathname;
@@ -16,8 +16,6 @@ const SeekerHeader = props => {
   }, [sendRequest]);
 
   if (data) {
-    console.log(data.id);
-    console.log(data);
     return (
       <div className="header-container">
         <div className="nav-styling">
@@ -25,7 +23,7 @@ const SeekerHeader = props => {
             <h1 className="header-message">
               {data.name ? `Welcome ${data.name}` : ""}
             </h1>
-            {data.id && (
+            {data.name && (
               <div className="button-container">
                 <button className="profile-button">
                   <Link className="link" to={`/seekers/${data.id}`}>

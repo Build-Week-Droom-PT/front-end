@@ -2,13 +2,7 @@ import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
-const SeekerNewUser = ({
-  errors,
-  touched,
-  isSubmitting,
-  isValidating,
-  values
-}) => {
+const SeekerNewUser = ({ errors, touched, isSubmitting, values }) => {
   return (
     <div className="seeker-profile">
       <div className="match-styling">
@@ -114,8 +108,6 @@ export default withFormik({
       //     setSubmitting(false);
       //   });
       resetForm();
-
-      window.location.href = `/`;
     }
   }
 })(SeekerNewUser);

@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import styled from "styled-components";
 import useHttp from "./Hooks/http";
+
 import SearchJobCard from "./SearchJobs/SearchJobCard";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
-  console.log(user);
   const { isLoadng, data, error, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -44,10 +44,6 @@ function SeekerProfile(props) {
     align-items: flex-start;
   `;
 
-  const onClickHandler = e => {
-    e.preventDefault();
-  };
-
   if (data) {
     const { id, name, description, skills, location } = data;
     return (
@@ -62,11 +58,6 @@ function SeekerProfile(props) {
             <h3>Current Location</h3>
             <h4>{location}</h4>
           </CardStyling>
-          {/* <PrivateRoute
-          exact
-          path="/matched/seeker/:id"
-          component={SeekerMatches}
-        /> */}
         </CardCentering>
         <SearchJobCard />
       </div>

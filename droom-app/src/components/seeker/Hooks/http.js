@@ -38,7 +38,6 @@ const useHttp = () => {
       })
       .then(responseData => {
         dispatchHttp({ type: "RESPONSE", responseData: responseData });
-        console.log(responseData);
       })
       .catch(err => {
         dispatchHttp({ type: "ERROR", errorMessage: "Handle all Actions!" });

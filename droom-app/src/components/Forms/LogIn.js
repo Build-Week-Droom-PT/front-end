@@ -16,13 +16,10 @@ const LogIn = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(loginData, userID);
 
     axiosWithAuth()
       .post("/login", loginData)
       .then(res => {
-        console.log(res);
-        console.log(res.data.id);
         const id = res.data.id;
         setUserID(res.data);
 
@@ -44,8 +41,7 @@ const LogIn = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const signUpClickHandler = e => {
-    // e.prevent.default();
+  const signUpClickHandler = () => {
     setShowSignUp(true);
     setShowLogin(false);
   };

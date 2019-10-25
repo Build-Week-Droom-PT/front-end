@@ -3,14 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 
-const SeekerProfileUpdate = ({
-  errors,
-  touched,
-  isSubmitting,
-  isValidating,
-  values
-}) => {
-  //   console.log(props);
+const SeekerProfileUpdate = ({ errors, touched, isSubmitting }) => {
   return (
     <div>
       <h1>Update Your Profile</h1>
@@ -137,12 +130,10 @@ export default withFormik({
 
         .put("https://droom-pt-bw.herokuapp.com/seekers", values)
         .then(res => {
-          // console.log(res);
           resetForm();
           setSubmitting(false);
         })
         .catch(err => {
-          // console.log(err);
           setSubmitting(false);
         });
     }
