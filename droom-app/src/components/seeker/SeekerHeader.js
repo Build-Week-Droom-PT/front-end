@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
 import useHttp from "./Hooks/http";
 import PrivateRoute from "../private/PrivateRoute";
@@ -7,16 +7,11 @@ import LogOut from "../Forms/LogOut";
 
 const SeekerHeader = props => {
   const id = props.location.pathname;
-  console.log(props.location.pathname);
-  const [collapsed, setCollapsed] = useState(true);
+  const { data, sendRequest } = useHttp();
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
-
-  const { isLoadng, data, error, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://droom-pt-bw.herokuapp.com/${id}`;
-    // const userID = data.id;
     sendRequest(proxy + url, "SEND");
   }, [sendRequest]);
   console.log(id);
@@ -31,6 +26,7 @@ const SeekerHeader = props => {
             <h1 className="header-message">
               {data.name ? `Welcome ${data.name}` : ""}
             </h1>
+
             <div className="button-container">
               <button className="profile-button">
                 <Link className="link" to={`/seekers/${data.id}`}>
@@ -42,16 +38,7 @@ const SeekerHeader = props => {
                   Matches
                 </Link>
               </button>
-              <button className="profile-button">
-                <Link className="link" to={`/matched/seeker/${data.id}`}>
-                  Jobs
-                </Link>
-              </button>
-              <button className="profile-button">
-                <Link className="link" to={<LogOut />}>
-                  Log Out
-                </Link>
-              </button>
+              <LogOut />
             </div>
           </div>
         </div>
@@ -59,7 +46,7 @@ const SeekerHeader = props => {
       </div>
     );
   } else {
-    return <span>No Header</span>;
+    return <span></span>;
   }
 };
 

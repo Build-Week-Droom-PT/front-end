@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import { withRouter } from "react-router";
 import styled from "styled-components";
 import useHttp from "./Hooks/http";
-import SeekerMatches from "./SeekerMatches";
-import PrivateRoute from "../private/PrivateRoute";
-import SeekerHomePage from "../seeker/SeekerHomePage";
-import SeekerHeader from "../seeker/SeekerHomePage";
+import SearchJobCard from "./SearchJobs/SearchJobCard";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
@@ -20,6 +17,7 @@ function SeekerProfile(props) {
   }, [sendRequest]);
 
   const CardStyling = styled.div`
+    border-radius: 12px;
     width: 75%;
     display: flex;
     flex-flow: column nowrap;
@@ -54,7 +52,6 @@ function SeekerProfile(props) {
     const { id, name, description, skills, location } = data;
     return (
       <div>
-        {/* <PrivateRoute path="/seekers/:id/" component={SeekerHeader} /> */}
         <CardCentering className="seeker-profile">
           <CardStyling key={id}>
             <h3>{name}</h3>
@@ -71,6 +68,7 @@ function SeekerProfile(props) {
           component={SeekerMatches}
         /> */}
         </CardCentering>
+        <SearchJobCard />
       </div>
     );
   } else {

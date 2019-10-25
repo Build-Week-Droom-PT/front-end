@@ -6,16 +6,18 @@ function SeekerMatches(props) {
   console.log(props.location.pathname);
   const pathID = props.location.pathname;
   const CardStyling = styled.div`
+    border-radius: 12px;
     width: 75%;
     display: flex;
     flex-flow: column nowrap;
     border: 1px solid #e1e6f9;
     margin: 3% auto;
     justify-content: space-between;
-    width: 50vw;
-    max-height: 50vh;
-    max-width: 1024px;
-    margin: 35px auto;
+    align-self: flex-start;
+    width: 30vw;
+    min-height: 300px;
+    min-width: 300px;
+    // margin: 0, 60%, 0, 0;
     background: #f1f3fd;
     padding: 15px;
     box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
@@ -24,8 +26,6 @@ function SeekerMatches(props) {
     font-size: 1.6rem;
   `;
 
-  // const { isLoadng, data, error, sendRequest } = useHttp();
-
   const { data, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -33,22 +33,24 @@ function SeekerMatches(props) {
 
     sendRequest(proxy + url, "SEND");
   }, [sendRequest]);
-  //
 
   if (data) {
     return (
       <div className="seeker-profile">
-        {data.map(job => (
-          <div key={job.user_id}>
-            <CardStyling key={Date.now()}>
-              <h3>{job.company}</h3>
-              <h4>{job.jobtitle}</h4>
-              <h4>${job.salary}</h4>
-              <h4>{job.location}</h4>
-              <h4>{job.description}</h4>
-            </CardStyling>
-          </div>
-        ))}
+        <div className="match-styling">
+          {data.map(job => (
+            <div key={job.user_id}>
+              <CardStyling key={Date.now()}>
+                <h1> It's a Match!</h1>
+                <h3>{job.company}</h3>
+                <h4>{job.jobtitle}</h4>
+                <h4>${job.salary}</h4>
+                <h4>{job.location}</h4>
+                <h4>{job.description}</h4>
+              </CardStyling>
+            </div>
+          ))}
+        </div>
       </div>
     );
   } else {

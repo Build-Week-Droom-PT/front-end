@@ -21,7 +21,6 @@ const useHttp = () => {
     error: null,
     data: null,
     userData: null
-    // seekerID: null
   });
 
   const sendRequest = useCallback((url, { type }) => {
@@ -30,8 +29,7 @@ const useHttp = () => {
       method: type,
       header: {
         "Content-type": "application/json",
-        Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTU3MTcxMjA5NCwiZXhwIjoxNTcxNzk4NDk0fQ.XquXtHP9Sqo775a958Bq-ubr917Fazx7pSUor4TchpM"
+        Authorization: localStorage.getItem("token")
       },
       body: JSON.stringify()
     })
@@ -46,14 +44,13 @@ const useHttp = () => {
         dispatchHttp({ type: "ERROR", errorMessage: "Handle all Actions!" });
         console.log(err);
       }); //fetch
-  }, []); //function useCallback is returning
+  }, []); //sendRequest function useCallback is returning
 
   return {
     isLoading: httpState.loading,
     data: httpState.data,
     error: httpState.error,
     sendRequest: sendRequest
-    // seekerID: httpState.data.id
   }; //return statement
 }; //useHttp
 
