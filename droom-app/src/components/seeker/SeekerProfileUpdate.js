@@ -133,8 +133,7 @@ export default withFormik({
       setErrors({ verifyPassword: "Passwords do not match" });
       setSubmitting(false);
     } else {
-      axios
-
+      axios()
         .put("https://droom-pt-bw.herokuapp.com/seekers", values)
         .then(res => {
           // console.log(res);

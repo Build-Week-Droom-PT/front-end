@@ -90,6 +90,7 @@ import useHttp from "./Hooks/http";
 import PrivateRoute from "../private/PrivateRoute";
 import SeekerMatches from "./SeekerMatches";
 import LogOut from "../Forms/LogOut";
+import SeekerProfileUpdate from "../seeker/SeekerProfileUpdate";
 
 const SeekerHeader = props => {
   const id = props.location.pathname;
@@ -133,7 +134,13 @@ const SeekerHeader = props => {
                   Jobs
                 </Link>
               </button>
+              <button className="profile-button">
+                <Link className="link" to={`/profile-update/${data.id}`}>
+                  Update Profile
+                </Link>
+              </button>
               <LogOut/>
+
             </div>
           </div>
         </div>
