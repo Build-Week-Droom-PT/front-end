@@ -27,7 +27,6 @@ function SeekerProfile(props) {
     width: 30vw;
     min-height: 50vh;
     max-width: 1024px;
-    // margin: 0, 60%, 0, 0;
     background: #f1f3fd;
     padding: 15px;
     box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
@@ -36,7 +35,6 @@ function SeekerProfile(props) {
     font-size: 1.6rem;
   `;
   const CardCentering = styled.div`
-    border: 1px solid green;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-evenly;
