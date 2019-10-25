@@ -11,6 +11,7 @@ Our app helps to match employers and job seekers who are mutually interested in 
 Features
 
 What features are required for your minimum viable product?
+
 Onboarding processing for a job-seeker
 Ability to easily create/setup a user profile (including name, occupation field, past experiences, interests, etc.)
 Onboarding processing for companies
@@ -21,6 +22,7 @@ What features may you wish to put in a future release?
 Ability to message a ‘match’.
 Ability to upload profile picture.
 Allow login through linkedin to fill in profile.
+
 What do the top 3 similar apps do for their users?
 LinkedIn
 Follow Companies
