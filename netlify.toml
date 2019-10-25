@@ -1,8 +1,9 @@
 [build]
- base = "droom-app"
- publish = "droom-app/build/"
- command = "npm run build"
-  [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+base="droom-app"
+publish="droom-app/build/"
+command="npm run build"
+
+[[redirects]]
+from="/*"
+to="/index.html"
+status=200
