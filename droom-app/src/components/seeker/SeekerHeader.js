@@ -26,20 +26,21 @@ const SeekerHeader = props => {
             <h1 className="header-message">
               {data.name ? `Welcome ${data.name}` : ""}
             </h1>
-
-            <div className="button-container">
-              <button className="profile-button">
-                <Link className="link" to={`/seekers/${data.id}`}>
-                  Home
-                </Link>
-              </button>
-              <button className="profile-button">
-                <Link className="link" to={`/matched/seeker/${data.id}`}>
-                  Matches
-                </Link>
-              </button>
-              <LogOut />
-            </div>
+            {data.id && (
+              <div className="button-container">
+                <button className="profile-button">
+                  <Link className="link" to={`/seekers/${data.id}`}>
+                    Home
+                  </Link>
+                </button>
+                <button className="profile-button">
+                  <Link className="link" to={`/matched/seeker/${data.id}`}>
+                    Matches
+                  </Link>
+                </button>
+                <LogOut />
+              </div>
+            )}
           </div>
         </div>
         <PrivateRoute exact path="/matched/" component={SeekerMatches} />
