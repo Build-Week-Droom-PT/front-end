@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 
@@ -65,50 +66,52 @@ const SeekerNewUser = ({ errors, touched, isSubmitting, values }) => {
   );
 };
 
-export default withFormik({
-  mapPropsToValues({ username, email, password, verifyPassword, company }) {
-    return {
-      username: username || "",
-      email: email || "",
-      password: password || "",
-      verifyPassword: password || "",
-      company: company || false,
-      isCompany: false
-    };
-  },
-  validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("Please Enter A Valid Email")
-      .required("Required"),
-    password: Yup.string()
-      .min(8, "Password must be 8 characters or longer")
-      .required("Required"),
-    verifyPassword: Yup.string()
-      .min(8, "Password must be 8 characters or longer and should match")
-      .required("Required"),
-    username: Yup.string().required("Required"),
-    company: Yup.boolean()
-  }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    if (values.password !== values.verifyPassword) {
-      setErrors({ verifyPassword: "Passwords do not match" });
-      setSubmitting(false);
-    } else {
-      // const proxy = "https://cors-anywhere.herokuapp.com/";
-      // const url = `https://droom-pt-bw.herokuapp.com/register`;
-      // axios
-      //   .post(proxy + url, values)
-      //   .then(res => {
-      //     console.log(res);
-      //     resetForm();
-      //     setSubmitting(false);
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //     setSubmitting(false);
-      //   });
-      resetForm();
-      window.location.href = `/`;
+export default withRouter(
+  withFormik({
+    mapPropsToValues({ username, email, password, verifyPassword, company }) {
+      return {
+        username: username || "",
+        email: email || "",
+        password: password || "",
+        verifyPassword: password || "",
+        company: company || false,
+        isCompany: false
+      };
+    },
+    validationSchema: Yup.object().shape({
+      email: Yup.string()
+        .email("Please Enter A Valid Email")
+        .required("Required"),
+      password: Yup.string()
+        .min(8, "Password must be 8 characters or longer")
+        .required("Required"),
+      verifyPassword: Yup.string()
+        .min(8, "Password must be 8 characters or longer and should match")
+        .required("Required"),
+      username: Yup.string().required("Required"),
+      company: Yup.boolean()
+    }),
+    handleSubmit(values, { resetForm, setErrors, setSubmitting, props }) {
+      if (values.password !== values.verifyPassword) {
+        setErrors({ verifyPassword: "Passwords do not match" });
+        setSubmitting(false);
+      } else {
+        // const proxy = "https://cors-anywhere.herokuapp.com/";
+        // const url = `https://droom-pt-bw.herokuapp.com/register`;
+        // axios
+        //   .post(proxy + url, values)
+        //   .then(res => {
+        //     console.log(res);
+        //     resetForm();
+        //     setSubmitting(false);
+        //   })
+        //   .catch(err => {
+        //     console.log(err);
+        //     setSubmitting(false);
+        //   });
+        resetForm();
+        props.history.push(`/login`);
+      }
     }
-  }
-})(SeekerNewUser);
+  })(SeekerNewUser)
+);

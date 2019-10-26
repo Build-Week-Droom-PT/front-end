@@ -10,7 +10,7 @@ class LogOut extends Component {
   logout = () => {
     localStorage.clear("token");
     this.setState({ navigate: true });
-    window.location.href = `/`;
+    this.props.history.push(`/`);
   };
 
   render() {

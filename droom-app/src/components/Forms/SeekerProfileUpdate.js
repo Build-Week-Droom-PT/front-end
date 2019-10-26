@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 // import axios from "axios";
 
-const SeekerProfileUpdate = ({ errors, touched, isSubmitting }) => {
+const SeekerProfileUpdate = ({ errors, touched, isSubmitting, history }) => {
   return (
     <Form className="update-profile">
       <h1>Update Your Profile</h1>
@@ -121,7 +121,7 @@ export default withFormik({
     description: Yup.string(),
     upload: Yup.mixed()
   }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+  handleSubmit(values, { resetForm, setErrors, setSubmitting, props }) {
     // if (values.password !== values.verifyPassword) {
     //   setErrors({ verifyPassword: "Passwords do not match" });
     //   setSubmitting(false);
@@ -138,6 +138,6 @@ export default withFormik({
     // }
     resetForm();
     //hacky workaround to make app appear to function since there are backend problems
-    window.location.href = `/seekers/1`;
+    props.history.push(`/seekers/1`);
   }
 })(SeekerProfileUpdate);

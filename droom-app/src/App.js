@@ -29,7 +29,7 @@ function App() {
           path="/matched/seeker/:id"
           component={SeekerMatches}
         />
-        <PrivateRoute path="/sign-up" component={SeekerNewUser} />
+        <Route path="/sign-up" component={SeekerNewUser} />
         <Route exact path="/seekers" component={SeekerProfileUpdate} />
         <Route exact path="/search" component={SearchJobCard} />
       </Router>
