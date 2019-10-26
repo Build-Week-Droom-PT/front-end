@@ -8,7 +8,7 @@ import SeekerNewUser from "./components/Forms/seekerSignUp/SeekerNewUser";
 import SeekerHeader from "./components/Header/Header";
 import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import SeekerMatches from "./components/Match/SeekerMatches";
-// import SeekerProfileUpdate from "./components/Forms/SeekerProfileUpdate";
+import SeekerProfileUpdate from "./components/Forms/SeekerProfileUpdate";
 
 function App() {
   return (
@@ -27,11 +27,7 @@ function App() {
           component={SeekerMatches}
         />
         <PrivateRoute path="/sign-up" component={SeekerNewUser} />
-        {/* <PrivateRoute
-          exact
-          path="/profile-update/:user_id"
-          component={SeekerProfileUpdate}
-        /> */}
+        <PrivateRoute exact path="/seekers" component={SeekerProfileUpdate} />
       </Router>
     </div>
   );

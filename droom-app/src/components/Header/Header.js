@@ -34,6 +34,11 @@ const SeekerHeader = props => {
                   <Link className="link" to={`/matched/seeker/${data.id}`}>
                     Matches
                   </Link>
+                </button>{" "}
+                <button className="profile-button">
+                  <Link className="link" to={`/seekers`}>
+                    Update Profile
+                  </Link>
                 </button>
                 <LogOut />
               </div>

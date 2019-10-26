@@ -5,83 +5,87 @@ import axios from "axios";
 
 const SeekerProfileUpdate = ({ errors, touched, isSubmitting }) => {
   return (
-    <div>
-      <h1>Update Your Profile</h1>
-      <Form className="form">
-        <Field
-          component="input"
-          type="text"
-          name="name"
-          placeholder="Full Name"
-        />
-        {touched.name && errors.name && <p className="errors">{errors.name}</p>}
-        <Field
-          component="input"
-          type="email"
-          name="email"
-          placeholder="email@example.com"
-        />
-        {touched.email && errors.email && (
-          <p className="errors">{errors.email}</p>
-        )}
-        <Field
-          component="input"
-          type="password"
-          name="password"
-          placeholder="Password"
-        />
-        {touched.password && errors.password && (
-          <p className="errors">{errors.password}</p>
-        )}
-        <Field
-          component="input"
-          type="password"
-          name="verifyPassword"
-          placeholder="Verify Password"
-        />
-        {touched.verifyPassword && errors.verifyPassword && (
-          <p className="errors">{errors.verifyPassword}</p>
-        )}
-        <Field
-          component="input"
-          type="text"
-          name="location"
-          placeholder="City, State"
-        />
-        {touched.location && errors.location && (
-          <p className="errors">{errors.location}</p>
-        )}
-        <Field
-          component="input"
-          type="text"
-          name="skills"
-          placeholder="Skills"
-        />
-        {touched.skills && errors.skills && (
-          <p className="errors">{errors.skills}</p>
-        )}
-        <Field
-          component="input"
-          type="text"
-          name="description"
-          placeholder="Description"
-        />
-        {touched.description && errors.description && (
-          <p className="errors">{errors.description}</p>
-        )}
-        <Field
-          component="input"
-          type="file"
-          name="picture"
-          placeholder="Upload A Picture"
-        />
-        {touched.picture && errors.picture && (
-          <p className="errors">{errors.picture}</p>
-        )}
-        <button className="button" type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
-      </Form>
+    <div className="seeker-profile">
+      <div className="match-styling">
+        <Form className="card-styling">
+          <h1>Update Your Profile</h1>
+          <Field
+            component="input"
+            type="text"
+            name="name"
+            placeholder="Full Name"
+          />
+          {touched.name && errors.name && (
+            <p className="errors">{errors.name}</p>
+          )}
+          <Field
+            component="input"
+            type="email"
+            name="email"
+            placeholder="email@example.com"
+          />
+          {touched.email && errors.email && (
+            <p className="errors">{errors.email}</p>
+          )}
+          <Field
+            component="input"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
+          {touched.password && errors.password && (
+            <p className="errors">{errors.password}</p>
+          )}
+          <Field
+            component="input"
+            type="password"
+            name="verifyPassword"
+            placeholder="Verify Password"
+          />
+          {touched.verifyPassword && errors.verifyPassword && (
+            <p className="errors">{errors.verifyPassword}</p>
+          )}
+          <Field
+            component="input"
+            type="text"
+            name="local"
+            placeholder="City, State"
+          />
+          {touched.local && errors.local && (
+            <p className="errors">{errors.local}</p>
+          )}
+          <Field
+            component="input"
+            type="text"
+            name="skills"
+            placeholder="Skills"
+          />
+          {touched.skills && errors.skills && (
+            <p className="errors">{errors.skills}</p>
+          )}
+          <Field
+            component="input"
+            type="text"
+            name="description"
+            placeholder="Description"
+          />
+          {touched.description && errors.description && (
+            <p className="errors">{errors.description}</p>
+          )}
+          <Field
+            component="input"
+            type="file"
+            name="picture"
+            placeholder="Upload A Picture"
+          />
+          {touched.picture && errors.picture && (
+            <p className="errors">{errors.picture}</p>
+          )}
+          <button className="button" type="submit" disabled={isSubmitting}>
+            Submit
+          </button>
+        </Form>
+      </div>
     </div>
   );
 };
@@ -92,7 +96,7 @@ export default withFormik({
     email,
     password,
     verifyPassword,
-    location,
+    local,
     skills,
     description,
     picture
@@ -102,7 +106,7 @@ export default withFormik({
       email: email || "",
       password: password || "",
       verifyPassword: verifyPassword || "",
-      location: location || "",
+      local: local || "",
       skills: skills || "",
       description: description || "",
       picture: picture || ""
@@ -126,16 +130,17 @@ export default withFormik({
       setErrors({ verifyPassword: "Passwords do not match" });
       setSubmitting(false);
     } else {
-      axios
-
-        .put("https://droom-pt-bw.herokuapp.com/seekers", values)
-        .then(res => {
-          resetForm();
-          setSubmitting(false);
-        })
-        .catch(err => {
-          setSubmitting(false);
-        });
+      // axios
+      //   .put("https://droom-pt-bw.herokuapp.com/seekers", values)
+      //   .then(res => {
+      //     resetForm();
+      //     setSubmitting(false);
+      //   })
+      //   .catch(err => {
+      //     setSubmitting(false);
+      //   });
     }
+    resetForm();
+    window.location.href = `/`;
   }
 })(SeekerProfileUpdate);
