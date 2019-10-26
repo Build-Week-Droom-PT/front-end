@@ -17,7 +17,6 @@ function App() {
     <div>
       <Router className="page-color">
         <MainHeader />
-        <SeekerHeader />
         <Route exact path="/login" component={LogIn} />
         <PrivateRoute
           exact
@@ -30,8 +29,12 @@ function App() {
           component={SeekerMatches}
         />
         <Route path="/sign-up" component={SeekerNewUser} />
-        <Route exact path="/seekers" component={SeekerProfileUpdate} />
-        <Route exact path="/search" component={SearchJobCard} />
+        <PrivateRoute
+          exact
+          path="/update/seekers/:id"
+          component={SeekerProfileUpdate}
+        />
+        <PrivateRoute exact path="/search/:id" component={SearchJobCard} />
       </Router>
     </div>
   );

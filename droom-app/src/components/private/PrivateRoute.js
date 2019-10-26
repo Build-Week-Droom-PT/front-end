@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import SeekerHeader from "../Header/SeekerHeader";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
@@ -7,7 +8,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={props => {
         if (localStorage.getItem("token")) {
-          return <Component {...props} />;
+          return (
+            <>
+              <SeekerHeader />
+              <Component {...props} />
+            </>
+          );
         } else {
           return <Redirect to="/" />;
         }
