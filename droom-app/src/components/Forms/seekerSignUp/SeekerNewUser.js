@@ -71,7 +71,7 @@ export default withFormik({
       username: username || "",
       email: email || "",
       password: password || "",
-      verifyPassword: verifyPassword || "",
+      verifyPassword: password || "",
       company: company || false,
       isCompany: false
     };
