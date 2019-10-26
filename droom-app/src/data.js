@@ -1,4 +1,4 @@
-export const jobs = [
+const jobs = [
   {
     id: 1,
     company: "Mind-Corp",
@@ -39,3 +39,5 @@ export const jobs = [
     confirmed: null
   }
 ];
+
+export default jobs;

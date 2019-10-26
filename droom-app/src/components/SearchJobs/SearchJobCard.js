@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router";
-import { jobs } from "../../data";
+import jobsData from "../../data";
 
 function SearchJobCard() {
+  const [jobs, setJobs] = useState(jobsData);
+  console.log(jobs);
   const CardStyling = styled.div`
     border-radius: 12px;
     width: 75%;
@@ -39,15 +41,18 @@ function SearchJobCard() {
     font-size: 2.6rem;
   `;
 
-  function likeClickHandler(e) {
-    e.preventDefault();
-    console.log(e.target.value);
-    console.log(`You liked this job!`);
+  function likeClickHandler(userID) {
+    const newArray = jobs.filter(job => {
+      return job.id !== userID;
+    });
+    setJobs(newArray);
   }
 
-  function passClickHandler(e) {
-    e.preventDefault();
-    console.log(`No thanks for this job!`);
+  function passClickHandler(userID) {
+    const newArray = jobs.filter(job => {
+      return job.id !== userID;
+    });
+    setJobs(newArray);
   }
 
   if (jobs) {
@@ -62,12 +67,12 @@ function SearchJobCard() {
               <h4>{job.location}</h4>
               <h4>{job.description}</h4>
               <LinkStyling>
-                <button onClick={likeClickHandler}>
+                <button onClick={() => likeClickHandler(job.id)}>
                   <FontColor>
                     <i className="far fa-thumbs-up"></i>
                   </FontColor>
                 </button>
-                <button onClick={passClickHandler}>
+                <button onClick={() => passClickHandler(job.id)}>
                   <FontColor>
                     <i className="far fa-thumbs-down"></i>
                   </FontColor>

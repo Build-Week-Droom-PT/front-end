@@ -10,6 +10,7 @@ class LogOut extends Component {
   logout = () => {
     localStorage.clear("token");
     this.setState({ navigate: true });
+    window.location.href = `/`;
   };
 
   render() {
@@ -18,7 +19,6 @@ class LogOut extends Component {
     if (navigate) {
       return <Redirect to="/" push={true} />;
     }
-
     return <Button onClick={this.logout}>Log Out</Button>;
   }
 }

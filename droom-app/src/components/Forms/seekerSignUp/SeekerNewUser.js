@@ -108,6 +108,7 @@ export default withFormik({
       //     setSubmitting(false);
       //   });
       resetForm();
+      window.location.href = `/`;
     }
   }
 })(SeekerNewUser);
