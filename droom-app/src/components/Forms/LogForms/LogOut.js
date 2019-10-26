@@ -19,7 +19,11 @@ class LogOut extends Component {
     if (navigate) {
       return <Redirect to="/" push={true} />;
     }
-    return <Link onClick={this.logout}>Log Out</Link>;
+    return (
+      <Link to="/" onClick={this.logout}>
+        Log Out
+      </Link>
+    );
   }
 }
 

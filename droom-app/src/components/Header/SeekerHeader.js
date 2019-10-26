@@ -19,7 +19,7 @@ const SeekerHeader = props => {
   if (data) {
     return (
       <div>
-        <div className="header"></div>
+        {/* <div className="header"></div> */}
         <div className="nav-container">
           <div className="nav-styling">
             {data.name && (
@@ -49,7 +49,7 @@ const SeekerHeader = props => {
       </div>
     );
   } else {
-    return <MainHeader />;
+    return null;
   }
 };
 

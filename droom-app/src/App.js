@@ -9,14 +9,16 @@ import SeekerHeader from "./components/Header/SeekerHeader";
 import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import SeekerMatches from "./components/Match/SeekerMatches";
 import SeekerProfileUpdate from "./components/Forms/SeekerProfileUpdate";
+import MainHeader from "./components/Header/MainHeader";
 
 function App() {
   return (
     <div>
       <Router className="page-color">
-        <SeekerHeader />
+        <MainHeader />
 
-        <Route exact path="/" component={LogIn} />
+        <SeekerHeader />
+        <Route exact path="/login" component={LogIn} />
         <PrivateRoute
           exact
           path="/seekers/:id"
@@ -28,7 +30,7 @@ function App() {
           component={SeekerMatches}
         />
         <PrivateRoute path="/sign-up" component={SeekerNewUser} />
-        <PrivateRoute exact path="/seekers" component={SeekerProfileUpdate} />
+        <Route exact path="/seekers" component={SeekerProfileUpdate} />
       </Router>
     </div>
   );

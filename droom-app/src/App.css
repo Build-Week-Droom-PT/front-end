@@ -13,7 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
   max-height: 100%;
   max-width: 100%;
-  height: 40vh;
+  height: 30vh;
   background: url(images/hero-image-masked.png) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -30,13 +30,18 @@
   -moz-osx-font-smoothing: grayscale;
   max-height: 100%;
   max-width: 100%;
-  height: 20vh;
+  height: 30vh;
   background: url(images/hero-image-masked.png) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   padding: 0;
+}
+
+.header-spacing {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 /* .header-container {
@@ -58,13 +63,23 @@
   width: 100%;
   align-content: space-evenly;
 } */
+.droom {
+  margin-bottom: 4%;
+  color: #1f2852;
+  font-size: 4rem;
+}
 .button-container {
   display: flex;
-  font-size: 1.5rem;
+  font-size: 2rem;
   flex-flow: row nowrap;
   justify-content: space-around;
+  align-items: center;
+  height: 75px;
   width: 100%;
   border: 1px solid purple;
+  /* margin-top: 10%; */
+  color: #e1e6f9;
+  background: #1f2852;
 }
 
 .header-message {
@@ -94,7 +109,7 @@
 }
 
 .link {
-  color: #383c4f;
+  /* color: #383c4f; */
 }
 .profile-button {
   border: none;
