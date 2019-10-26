@@ -19,9 +19,17 @@ function App() {
         <MainHeader />
         <SeekerHeader />
         <Route exact path="/login" component={LogIn} />
-        <Route exact path="/seekers/:id" component={SeekerProfileWithRouter} />
-        <Route exact path="/matched/seeker/:id" component={SeekerMatches} />
-        <Route path="/sign-up" component={SeekerNewUser} />
+        <PrivateRoute
+          exact
+          path="/seekers/:id"
+          component={SeekerProfileWithRouter}
+        />
+        <PrivateRoute
+          exact
+          path="/matched/seeker/:id"
+          component={SeekerMatches}
+        />
+        <PrivateRoute path="/sign-up" component={SeekerNewUser} />
         <Route exact path="/seekers" component={SeekerProfileUpdate} />
         <Route exact path="/search" component={SearchJobCard} />
       </Router>
