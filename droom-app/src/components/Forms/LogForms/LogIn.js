@@ -8,7 +8,7 @@ const initialState = {
   password: ""
 };
 
-const LogIn = () => {
+const LogIn = props => {
   const [loginData, setLoginData] = useState(initialState);
   const [userID, setUserID] = useState({});
   const [showSignUp, setShowSignUp] = useState(false);
@@ -26,9 +26,9 @@ const LogIn = () => {
         localStorage.setItem("token", res.data.token);
 
         if (res.data.isCompany) {
-          window.location.href = "/companyhomepage";
+          props.history.push("/companyhomepage");
         } else {
-          window.location.href = `/seekers/${id}`;
+          props.history.push(`/seekers/${id}`);
         }
       })
       .catch(err => {
