@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 class LogOut extends Component {
@@ -27,4 +27,4 @@ class LogOut extends Component {
   }
 }
 
-export default LogOut;
+export default withRouter(LogOut);

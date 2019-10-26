@@ -14,8 +14,9 @@ const SeekerHeader = props => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://droom-pt-bw.herokuapp.com/${id}`;
     sendRequest(proxy + url, "SEND");
-  }, [sendRequest]);
+  }, [sendRequest, id]);
 
+  console.log(`hello world`);
   if (data) {
     return (
       <div>
