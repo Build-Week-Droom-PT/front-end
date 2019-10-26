@@ -16,18 +16,14 @@ function SeekerProfile(props) {
   }, [sendRequest]);
 
   const CardStyling = styled.div`
-    border-radius: 12px;
-    width: 75%;
     display: flex;
     flex-flow: column nowrap;
     border: 1px solid #e1e6f9;
     margin: 3% auto;
     justify-content: space-between;
     align-self: flex-start;
-    width: 30vw;
+    max-width: 70vw;
     min-height: 50vh;
-    max-width: 1024px;
-    background: #f1f3fd;
     padding: 15px;
     box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
       0 15px 12px rgba(44, 58, 127, 0.22);
@@ -56,7 +52,6 @@ function SeekerProfile(props) {
             <h4>{location}</h4>
           </CardStyling>
         </CardCentering>
-        <SearchJobCard />
       </div>
     );
   } else {

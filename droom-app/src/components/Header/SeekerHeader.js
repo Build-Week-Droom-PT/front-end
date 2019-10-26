@@ -29,6 +29,9 @@ const SeekerHeader = props => {
                 <Link className="link" to={`/matched/seeker/${data.id}`}>
                   Matches
                 </Link>
+                <Link className="link" to={`/search`}>
+                  Find A Job
+                </Link>
                 <Link className="link" to={`/seekers`}>
                   Update Your Profile
                 </Link>

@@ -6,41 +6,6 @@ import jobsData from "../../data";
 function SearchJobCard() {
   const [jobs, setJobs] = useState(jobsData);
 
-  const CardStyling = styled.div`
-    border-radius: 12px;
-    width: 75%;
-    display: flex;
-    flex-flow: column nowrap;
-    border: 1px solid #e1e6f9;
-    margin: 3% auto;
-    justify-content: space-between;
-    align-self: flex-start;
-    width: 30vw;
-    min-height: 300px;
-    min-width: 300px;
-    // margin: 0, 60%, 0, 0;
-    background: #f1f3fd;
-    padding: 15px;
-    box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
-      0 15px 12px rgba(44, 58, 127, 0.22);
-    color: #383c4f;
-    font-size: 1.6rem;
-  `;
-
-  const LinkStyling = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 3%;
-    color: #2c3a74;
-    box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
-      0 15px 12px rgba(44, 58, 127, 0.22);
-  `;
-
-  const FontColor = styled.div`
-    color: #2c3a74;
-    font-size: 2.6rem;
-  `;
-
   function likeClickHandler(userID) {
     const newArray = jobs.filter(job => {
       return job.id !== userID;
@@ -55,6 +20,34 @@ function SearchJobCard() {
     setJobs(newArray);
   }
 
+  const CardStyling = styled.div`
+    border: 1px solid #e1e6f9;
+    margin: 3% auto;
+    max-width: 100%
+    width: 70vw;
+    padding: 15px;
+    color: #383c4f;
+    font-size: 1.6rem;
+    box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
+      0 15px 12px rgba(44, 58, 127, 0.22);
+  `;
+
+  const LinkStyling = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 3%;
+    color: #2c3a74;
+  `;
+
+  const Shadow = styled.div`
+    box-shadow: 0 19px 38px rgba(44, 58, 127, 0.33),
+      0 15px 12px rgba(44, 58, 127, 0.22);
+  `;
+  const FontColor = styled.div`
+    color: #2c3a74;
+    font-size: 2.6rem;
+  `;
+
   if (jobs) {
     return (
       <div>
@@ -67,16 +60,20 @@ function SearchJobCard() {
               <h4>{job.location}</h4>
               <h4>{job.description}</h4>
               <LinkStyling>
-                <button onClick={() => likeClickHandler(job.id)}>
-                  <FontColor>
-                    <i className="far fa-thumbs-up"></i>
-                  </FontColor>
-                </button>
-                <button onClick={() => passClickHandler(job.id)}>
-                  <FontColor>
-                    <i className="far fa-thumbs-down"></i>
-                  </FontColor>
-                </button>
+                <Shadow>
+                  <button onClick={() => likeClickHandler(job.id)}>
+                    <FontColor>
+                      <i className="far fa-thumbs-up"></i>
+                    </FontColor>
+                  </button>
+                </Shadow>
+                <Shadow>
+                  <button onClick={() => passClickHandler(job.id)}>
+                    <FontColor>
+                      <i className="far fa-thumbs-down"></i>
+                    </FontColor>
+                  </button>
+                </Shadow>
               </LinkStyling>
             </CardStyling>
           </div>

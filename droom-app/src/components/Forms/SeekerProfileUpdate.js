@@ -5,88 +5,84 @@ import * as Yup from "yup";
 
 const SeekerProfileUpdate = ({ errors, touched, isSubmitting }) => {
   return (
-    <div className="seeker-profile">
-      <div className="match-styling">
-        <Form className="card-styling">
-          <h1>Update Your Profile</h1>
-          <Field
-            component="input"
-            type="text"
-            name="name"
-            placeholder="Full Name"
-          />
-          {touched.name && errors.name && (
-            <p className="errors">{errors.name}</p>
-          )}
-          <Field
-            component="input"
-            type="email"
-            name="email"
-            placeholder="email@example.com"
-          />
-          {touched.email && errors.email && (
-            <p className="errors">{errors.email}</p>
-          )}
-          <Field
-            component="input"
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-          {touched.password && errors.password && (
-            <p className="errors">{errors.password}</p>
-          )}
-          <Field
-            component="input"
-            type="password"
-            name="verifyPassword"
-            placeholder="Verify Password"
-          />
-          {touched.verifyPassword && errors.verifyPassword && (
-            <p className="errors">{errors.verifyPassword}</p>
-          )}
-          <Field
-            component="input"
-            type="text"
-            name="local"
-            placeholder="City, State"
-          />
-          {touched.local && errors.local && (
-            <p className="errors">{errors.local}</p>
-          )}
-          <Field
-            component="input"
-            type="text"
-            name="skills"
-            placeholder="Skills"
-          />
-          {touched.skills && errors.skills && (
-            <p className="errors">{errors.skills}</p>
-          )}
-          <Field
-            component="input"
-            type="text"
-            name="description"
-            placeholder="Description"
-          />
-          {touched.description && errors.description && (
-            <p className="errors">{errors.description}</p>
-          )}
-          <Field
-            component="input"
-            type="file"
-            name="picture"
-            placeholder="Upload A Picture"
-          />
-          {touched.picture && errors.picture && (
-            <p className="errors">{errors.picture}</p>
-          )}
-          <button className="button" type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
-        </Form>
-      </div>
-    </div>
+    <Form className="update-profile">
+      <h1>Update Your Profile</h1>
+      <Field
+        className="shadow"
+        component="input"
+        type="text"
+        name="name"
+        placeholder="Full Name (optional)"
+      />
+      {touched.name && errors.name && <p className="errors">{errors.name}</p>}
+      <Field
+        className="shadow"
+        component="input"
+        type="email"
+        name="email"
+        placeholder="New email@example.com (optional)"
+      />
+      {touched.email && errors.email && (
+        <p className="errors">{errors.email}</p>
+      )}
+      <Field
+        className="shadow"
+        component="input"
+        type="password"
+        name="password"
+        placeholder="New Password (optional)"
+      />
+      {touched.password && errors.password && (
+        <p className="errors">{errors.password}</p>
+      )}
+      <Field
+        className="shadow"
+        component="input"
+        type="password"
+        name="verifyPassword"
+        placeholder="Verify Password"
+      />
+      {touched.verifyPassword && errors.verifyPassword && (
+        <p className="errors">{errors.verifyPassword}</p>
+      )}
+      <Field
+        className="shadow"
+        component="input"
+        type="text"
+        name="local"
+        placeholder="New City, State (optional)"
+      />
+      {touched.local && errors.local && (
+        <p className="errors">{errors.local}</p>
+      )}
+      <Field
+        className="shadow"
+        component="input"
+        type="text"
+        name="skills"
+        placeholder="New Skills (optional)"
+      />
+      {touched.skills && errors.skills && (
+        <p className="errors">{errors.skills}</p>
+      )}
+      <Field
+        className="shadow"
+        component="input"
+        type="text"
+        name="description"
+        placeholder="New Description (optional)"
+      />
+      {touched.description && errors.description && (
+        <p className="errors">{errors.description}</p>
+      )}
+      <Field className="shadow" component="input" type="file" name="picture" />
+      {touched.picture && errors.picture && (
+        <p className="errors">{errors.picture}</p>
+      )}
+      <button type="submit" disabled={isSubmitting}>
+        Submit
+      </button>
+    </Form>
   );
 };
 

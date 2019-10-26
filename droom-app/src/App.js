@@ -10,6 +10,7 @@ import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import SeekerMatches from "./components/Match/SeekerMatches";
 import SeekerProfileUpdate from "./components/Forms/SeekerProfileUpdate";
 import MainHeader from "./components/Header/MainHeader";
+import SearchJobCard from "./components/SearchJobs/SearchJobCard";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         />
         <PrivateRoute path="/sign-up" component={SeekerNewUser} />
         <Route exact path="/seekers" component={SeekerProfileUpdate} />
+        <Route exact path="/search" component={SearchJobCard} />
       </Router>
     </div>
   );
