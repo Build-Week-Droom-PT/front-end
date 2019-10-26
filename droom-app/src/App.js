@@ -5,7 +5,7 @@ import "./App.css";
 
 import LogIn from "./components/Forms/LogForms/LogIn";
 import SeekerNewUser from "./components/Forms/seekerSignUp/SeekerNewUser";
-import SeekerHeader from "./components/Header/Header";
+import SeekerHeader from "./components/Header/SeekerHeader";
 import SeekerProfileWithRouter from "./components/seeker/SeekerProfile";
 import SeekerMatches from "./components/Match/SeekerMatches";
 import SeekerProfileUpdate from "./components/Forms/SeekerProfileUpdate";
@@ -15,6 +15,7 @@ function App() {
     <div>
       <Router className="page-color">
         <SeekerHeader />
+
         <Route exact path="/" component={LogIn} />
         <PrivateRoute
           exact
