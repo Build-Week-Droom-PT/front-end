@@ -40,7 +40,7 @@ const SeekerHeader = props => {
             )}
           </div>
         </div>
-        <PrivateRoute exact path="/matched/" component={SeekerMatches} />
+        <Route exact path="/matched/" component={SeekerMatches} />
         <h1 className="header-message">
           {data.name ? `Welcome ${data.name}` : ""}
         </h1>
