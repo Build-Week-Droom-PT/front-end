@@ -18,11 +18,6 @@ function App() {
       <Router className="page-color">
         <MainHeader />
         <SeekerHeader />
-        <div>
-          <img src="./images/Toby.png" alt="Toby" />
-          <img src="" alt="" />
-          <img src="" alt="" />
-        </div>
         <Route exact path="/login" component={LogIn} />
         <PrivateRoute
           exact
