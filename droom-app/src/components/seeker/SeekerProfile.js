@@ -7,7 +7,7 @@ import SearchJobCard from "../SearchJobs/SearchJobCard";
 
 function SeekerProfile(props) {
   const user = Number(props.match.params.id);
-  const { isLoadng, data, error, sendRequest } = useHttp();
+  const { data, sendRequest } = useHttp();
   useEffect(() => {
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = `https://droom-pt-bw.herokuapp.com/seekers/${user}`;

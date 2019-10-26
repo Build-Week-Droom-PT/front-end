@@ -1,12 +1,7 @@
 import React from "react";
 import { Link, withRouter, Route } from "react-router-dom";
-import LogInButton from "../Forms/LogForms/LogInButton";
-// import LogInButton from "../Forms/LogForms/LogInButton";
 
-const MainHeader = props => {
-  const onClickHandler = e => {
-    return console.log("e.target.value");
-  };
+const MainHeader = () => {
   return (
     <div>
       <div className="main-header">

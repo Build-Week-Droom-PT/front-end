@@ -19,24 +19,19 @@ const SeekerHeader = props => {
   if (data) {
     return (
       <div>
-        {/* <div className="header"></div> */}
         <div className="nav-container">
           <div className="nav-styling">
             {data.name && (
               <div className="button-container">
-                {/* <button className="profile-button"> */}
                 <Link className="link" to={`/seekers/${data.id}`}>
                   Home
                 </Link>
-                {/* </button> */}
-                {/* <button className="profile-button"> */}
                 <Link className="link" to={`/matched/seeker/${data.id}`}>
                   Matches
                 </Link>
                 <Link className="link" to={`/seekers`}>
                   Update Your Profile
                 </Link>
-                {/* </button> */}
                 <LogOut />
               </div>
             )}

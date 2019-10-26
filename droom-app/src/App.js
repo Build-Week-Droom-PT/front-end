@@ -16,7 +16,6 @@ function App() {
     <div>
       <Router className="page-color">
         <MainHeader />
-
         <SeekerHeader />
         <Route exact path="/login" component={LogIn} />
         <PrivateRoute

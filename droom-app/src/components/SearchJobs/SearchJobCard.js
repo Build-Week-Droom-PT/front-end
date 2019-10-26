@@ -5,7 +5,7 @@ import jobsData from "../../data";
 
 function SearchJobCard() {
   const [jobs, setJobs] = useState(jobsData);
-  console.log(jobs);
+
   const CardStyling = styled.div`
     border-radius: 12px;
     width: 75%;
