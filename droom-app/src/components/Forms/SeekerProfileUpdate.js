@@ -141,7 +141,7 @@ export default withFormik({
     //     });
     // }
     resetForm();
-    //hacky fix since there are backend problems
+    //hacky workaround to make app appear to function since there are backend problems
     window.location.href = `/seekers/1`;
   }
 })(SeekerProfileUpdate);
