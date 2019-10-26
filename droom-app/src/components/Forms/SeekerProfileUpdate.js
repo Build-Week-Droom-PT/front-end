@@ -1,7 +1,7 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+// import axios from "axios";
 
 const SeekerProfileUpdate = ({ errors, touched, isSubmitting }) => {
   return (
@@ -126,21 +126,22 @@ export default withFormik({
     upload: Yup.mixed()
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    if (values.password !== values.verifyPassword) {
-      setErrors({ verifyPassword: "Passwords do not match" });
-      setSubmitting(false);
-    } else {
-      // axios
-      //   .put("https://droom-pt-bw.herokuapp.com/seekers", values)
-      //   .then(res => {
-      //     resetForm();
-      //     setSubmitting(false);
-      //   })
-      //   .catch(err => {
-      //     setSubmitting(false);
-      //   });
-    }
+    // if (values.password !== values.verifyPassword) {
+    //   setErrors({ verifyPassword: "Passwords do not match" });
+    //   setSubmitting(false);
+    // } else {
+    //   axios
+    //     .put(`https://droom-pt-bw.herokuapp.com/seekers`, values)
+    //     .then(res => {
+    //       resetForm();
+    //       setSubmitting(false);
+    //     })
+    //     .catch(err => {
+    //       setSubmitting(false);
+    //     });
+    // }
     resetForm();
-    window.location.href = `/`;
+    //hacky fix since there are backend problems
+    window.location.href = `/seekers/1`;
   }
 })(SeekerProfileUpdate);
