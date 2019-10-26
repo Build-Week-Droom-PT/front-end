@@ -8,3 +8,10 @@ from="/*"
 to="/index.html"
 status=200
 
+[[redirects]]
+  from = "/login"
+  to = "seekers/*"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"}
+  signed = "API_SIGNATURE_TOKEN"
